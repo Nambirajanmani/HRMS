@@ -1,0 +1,174 @@
+{"level":"info","message":"Incoming request: GET /api/auth/me","requestContext":{"requestId":"e1da2914-98eb-4484-b153-3cfafe6c8933","userId":null},"service":"hrms-backend","timestamp":"2025-08-17 13:42:43"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-08-17 13:42:43"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/auth/me","params":{},"path":"/api/auth/me","query":{},"service":"hrms-backend","timestamp":"2025-08-17 13:42:43"}
+{"error":"Access token expired","level":"error","message":"Authentication error","service":"hrms-backend","timestamp":"2025-08-17 13:42:43","url":"/api/auth/me"}
+{"level":"info","message":"Incoming request: GET /api/auth/me","requestContext":{"requestId":"ef775cc0-6170-4bff-b599-125ee77da444","userId":null},"service":"hrms-backend","timestamp":"2025-08-17 13:42:43"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-08-17 13:42:43"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/auth/me","params":{},"path":"/api/auth/me","query":{},"service":"hrms-backend","timestamp":"2025-08-17 13:42:43"}
+{"error":"Access token expired","level":"error","message":"Authentication error","service":"hrms-backend","timestamp":"2025-08-17 13:42:43","url":"/api/auth/me"}
+{"ip":"::1","level":"error","message":"Access token expired","method":"GET","service":"hrms-backend","stack":"Error: Access token expired\n    at verifyAccessToken (file:///C:/Users/rpavi/Downloads/Test/project/Backend/src/utils/authUtils.js:82:13)\n    at authenticate (file:///C:/Users/rpavi/Downloads/Test/project/Backend/src/middleware/auth.js:28:21)\n    at Layer.handle [as handle_request] (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2025-08-17 13:42:43","url":"/api/auth/me","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"e1da2914-98eb-4484-b153-3cfafe6c8933","userId":null},"requestId":null,"responseTime":87,"service":"hrms-backend","statusCode":401,"timestamp":"2025-08-17 13:42:43","url":"/api/auth/me","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36","userId":null}
+{"ip":"::1","level":"error","message":"Access token expired","method":"GET","service":"hrms-backend","stack":"Error: Access token expired\n    at verifyAccessToken (file:///C:/Users/rpavi/Downloads/Test/project/Backend/src/utils/authUtils.js:82:13)\n    at authenticate (file:///C:/Users/rpavi/Downloads/Test/project/Backend/src/middleware/auth.js:28:21)\n    at Layer.handle [as handle_request] (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2025-08-17 13:42:43","url":"/api/auth/me","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"ef775cc0-6170-4bff-b599-125ee77da444","userId":null},"requestId":null,"responseTime":24,"service":"hrms-backend","statusCode":401,"timestamp":"2025-08-17 13:42:43","url":"/api/auth/me","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36","userId":null}
+{"level":"info","message":"Incoming request: GET /api/auth/me","requestContext":{"requestId":"5ffcc0b4-6f49-4304-bb71-5122b50551d0","userId":null},"service":"hrms-backend","timestamp":"2025-08-17 13:42:43"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-08-17 13:42:43"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/auth/me","params":{},"path":"/api/auth/me","query":{},"service":"hrms-backend","timestamp":"2025-08-17 13:42:43"}
+{"error":"Access token expired","level":"error","message":"Authentication error","service":"hrms-backend","timestamp":"2025-08-17 13:42:43","url":"/api/auth/me"}
+{"ip":"::1","level":"error","message":"Access token expired","method":"GET","service":"hrms-backend","stack":"Error: Access token expired\n    at verifyAccessToken (file:///C:/Users/rpavi/Downloads/Test/project/Backend/src/utils/authUtils.js:82:13)\n    at authenticate (file:///C:/Users/rpavi/Downloads/Test/project/Backend/src/middleware/auth.js:28:21)\n    at Layer.handle [as handle_request] (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2025-08-17 13:42:43","url":"/api/auth/me","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"5ffcc0b4-6f49-4304-bb71-5122b50551d0","userId":null},"requestId":null,"responseTime":22,"service":"hrms-backend","statusCode":401,"timestamp":"2025-08-17 13:42:43","url":"/api/auth/me","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36","userId":null}
+{"level":"warn","message":"Environment variable EMAIL_ENABLED not set, using default: false","service":"hrms-backend","timestamp":"2025-08-17 13:43:38"}
+{"level":"info","message":"Scheduled job: birthday-notifications with cron: 0 9 * * *","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"Scheduled job: leave-balance-update with cron: 0 0 * * *","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"Scheduled job: performance-review-reminders with cron: 0 9 * * 1","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"Scheduled job: payroll-reminders with cron: 0 9 1 * *","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"Scheduled job: attendance-summary with cron: 0 18 * * *","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"Scheduled job: cleanup-audit-logs with cron: 0 2 * * 0","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"Scheduler service initialized successfully","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"🚀 Backend running on port 3000","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"📊 Health check: http://localhost:3000/api/health","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"Frontend URL allowed: http://localhost:5173","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"=== REGISTERED ROUTES ===","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/auth//register","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/auth//login","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/auth//me","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/employees//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/employees//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/departments//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/departments//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/attendance//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/attendance//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/leave//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/leave//:id/approve-reject","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave//employee/:employeeId","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave//summary/:employeeId","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave//calendar/:employeeId","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/leave//bulk-approve","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/users//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/users//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/users//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/users//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PATCH ^/api/users//change-password","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/users//reset-password-request","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PATCH ^/api/users//reset-password","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/users//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/users//:id/activity","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/positions//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/positions//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/payroll//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/payroll//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/payroll//employee/:employeeId/summary","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/payroll//:id/process","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/payroll//:id/pay","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/documents//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/documents//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/documents//:id/download","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/documents//:id/view","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/audit-logs//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/audit-logs//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/audit-logs//stats/summary","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/audit-logs//cleanup","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/reports//employees/stats","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/reports//attendance","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/reports//leave","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/reports//payroll","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/reports//audit","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave-policies//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/leave-policies//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave-policies//active","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave-policies//:id/usage-stats","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave-balances//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/leave-balances//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave-balances//employee/:employeeId","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/leave-balances//bulk-create","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave-balances//summary/:employeeId","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/leave-balances//:id/adjustment","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/leave-balances//stats/overview","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/job-postings//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/job-postings//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/job-applications//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/job-applications//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/interviews//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/interviews//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/performance-reviews//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/performance-reviews//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/onboarding-templates//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/onboarding-templates//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/onboarding-tasks//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/onboarding-tasks//bulk-update","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//employee/:employeeId/summary","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/offboarding-tasks//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/offboarding-tasks//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/training-programs//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/training-programs//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/training-records//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/training-records//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/disciplinary-actions//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/disciplinary-actions//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/settings//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"POST ^/api/settings//","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"PUT ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"DELETE ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/settings//public","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET ^/api/settings//categories","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"GET /api/health","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}
+{"level":"info","message":"=== TOTAL ROUTES: 143 ===","service":"hrms-backend","timestamp":"2025-08-17 13:43:39"}

@@ -1,0 +1,45 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\.89d87c66c4ad4b5a836e1374206635c4f7985fd8-audit.json",
+    "files": [
+        {
+            "date": 1754759469849,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\exceptions-2025-08-09.log",
+            "hash": "3ab5b4b66ae1cf3df71a0fcd8a2459ec7823c5ef374978a1f6cd2c8e45b87074"
+        },
+        {
+            "date": 1754805443955,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\exceptions-2025-08-10.log",
+            "hash": "5098f9d80ac73d51207d99485e25483af53bd76f3ba1be40ed6fab74764c414a"
+        },
+        {
+            "date": 1754890123721,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\exceptions-2025-08-11.log",
+            "hash": "f0cf7bec61ed41f52344931fcd322b37e71582873ba219c8251f69021a0e1d21"
+        },
+        {
+            "date": 1754937025016,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\exceptions-2025-08-12.log",
+            "hash": "47004e859d284f7db862d59d68ce41ea4dbf9d5c9a4fb7a0c98f2b98b79383a5"
+        },
+        {
+            "date": 1755057724062,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\exceptions-2025-08-13.log",
+            "hash": "f4f34273a4bdbe3794199c4954c022479d359d4ae1227c1dc68d593ea9ff1095"
+        },
+        {
+            "date": 1755145000855,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\exceptions-2025-08-14.log",
+            "hash": "33a0f351d8b244f18e9cbf2747dafb9ab2fc4ce3157151668de786e8dce792ff"
+        },
+        {
+            "date": 1755418418359,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\exceptions-2025-08-17.log",
+            "hash": "6c49a8de64dccac01695411e568fc6614de46b79b71731bac068aa7dc3ce49af"
+        }
+    ],
+    "hashType": "sha256"
+}

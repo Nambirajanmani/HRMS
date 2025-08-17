@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\rpavi\\react\\HrmsBackend-main\\logs\\.832fd1bcd6903d8eecef3f50bcc68b2fc654dfde-audit.json",
+    "files": [
+        {
+            "date": 1754455567445,
+            "name": "C:\\Users\\rpavi\\react\\HrmsBackend-main\\logs\\combined-2025-08-06.log",
+            "hash": "caf493ab39d871d0f089e98ca3502a24b5c3c5bed2d7d417b7c94e75f7eae351"
+        }
+    ],
+    "hashType": "sha256"
+}

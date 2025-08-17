@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\rpavi\\Downloads\\project-bolt-github-qd5drcmx\\project\\Backend\\logs\\.334a84e96b964052f1bc00dbecf4d04a853ce2e2-audit.json",
+    "files": [
+        {
+            "date": 1754745579533,
+            "name": "C:\\Users\\rpavi\\Downloads\\project-bolt-github-qd5drcmx\\project\\Backend\\logs\\error-2025-08-09.log",
+            "hash": "e0e1198eacb0307c4336bfc9b29e00f7e15c4e643b070c7dc934ee159c36e4c1"
+        }
+    ],
+    "hashType": "sha256"
+}

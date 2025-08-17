@@ -1,0 +1,110 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\.eb8c361bf21d81228c5caf67bff8aeb3e262e0fa-audit.json",
+    "files": [
+        {
+            "date": 1754759469845,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-09.log",
+            "hash": "a2a4606fdaac2880f90182e36b04386b6a814ccbfe4d80083abc3eca5167da2a"
+        },
+        {
+            "date": 1754805443951,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-10.log",
+            "hash": "481b9dc87c992fd7d9f8153aabe155d2031610b8c270be313b14c767d810412e"
+        },
+        {
+            "date": 1754886388306,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log",
+            "hash": "e0df38f1f3797f56a66fa170adfcd8e824294274dd40eb448ecb161b35e29e95"
+        },
+        {
+            "date": 1754916639107,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.1",
+            "hash": "beff0f73157b1fcb929ad6eb0671d987db74cd5d52abfe24222436f95777787b"
+        },
+        {
+            "date": 1754916663976,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.2",
+            "hash": "b0a91b03009811f8c8ddc9144b8b0dd5499b489a424ce9ca1c4a79edda5272d4"
+        },
+        {
+            "date": 1754916719886,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.3",
+            "hash": "d89fda2bac9103d470b315b7c4f61a6f2642f284302e6594223555a8699f5f8a"
+        },
+        {
+            "date": 1754916754828,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.4",
+            "hash": "b58387ad3d4bcf9e134866ee8464e82c06b68c3d7a4caedd0a260872f858c6f9"
+        },
+        {
+            "date": 1754916786279,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.5",
+            "hash": "0614a574988deb4999b8377c86b39d97b801a14a6762e1aff619f908421bcb73"
+        },
+        {
+            "date": 1754916815416,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.6",
+            "hash": "671d470982507738a672fbfbadffd8331740bfbc84e97d215edd75e55e196a78"
+        },
+        {
+            "date": 1754916852322,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.7",
+            "hash": "d8f1b196394507b9c9b046a577b9f32c305daafd1ea203b317c544b6f6a086d8"
+        },
+        {
+            "date": 1754916941421,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.8",
+            "hash": "a20cb83a49f89cdac0ea70ac724b1fc380adfc41a07e1171f20da054be97a85c"
+        },
+        {
+            "date": 1754917042797,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.9",
+            "hash": "9fbd878893ae8d37ed7d3738aff5d90dffdd438cd301c67fe73c703ed6bde710"
+        },
+        {
+            "date": 1754917139631,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.10",
+            "hash": "c233168dbcb8ae188fc1b2d72fd42fcf3dca8dd3984a215995e2774cee0daa97"
+        },
+        {
+            "date": 1754917188813,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.11",
+            "hash": "494f6e7437d807693cc2ca2fcd23d749846de1327610678ef6e939cba3e054ad"
+        },
+        {
+            "date": 1754917273627,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.12",
+            "hash": "02ebbc4c48360dfa29760d64156876ab1a33e01ec18fb342a34972034216d991"
+        },
+        {
+            "date": 1754917368055,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-11.log.13",
+            "hash": "d3e9217a9e0b8330afaefacb5a67f34b3acd667c46d2a63095e0d46bc41d8f4f"
+        },
+        {
+            "date": 1754937025013,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-12.log",
+            "hash": "18fd6724a53cf452d2ce4d27cc92cfeb52589a6b8e88d5d8aa23ee506024817f"
+        },
+        {
+            "date": 1755057159256,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-13.log",
+            "hash": "1a8ba509ee45bf33e8ef0388b2d1ede0a9de72d1cf5fae8317fe700ac04ef89a"
+        },
+        {
+            "date": 1755144632985,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-14.log",
+            "hash": "8f17457ba17f9982e2ad1f282c83dc5feb2e0b667df4249607af686afaa7eae7"
+        },
+        {
+            "date": 1755418363318,
+            "name": "C:\\Users\\rpavi\\Downloads\\Test\\project\\Backend\\logs\\combined-2025-08-17.log",
+            "hash": "819a8653d298db83f60eefd383f1ffe87bf4a6f0038efe35c73e5b56840e1616"
+        }
+    ],
+    "hashType": "sha256"
+}
