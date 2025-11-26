@@ -49,7 +49,6 @@ const Sidebar = ({ open, setOpen }) => {
   const location = useLocation()
   const navigate = useNavigate()
   const { user, hasPermission, logout } = useAuth()
-  const [collapsed, setCollapsed] = useState(false)
 
   const filteredNavigation = navigation.filter(item => 
     hasPermission(item.roles)
