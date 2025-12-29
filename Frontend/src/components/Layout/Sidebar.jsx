@@ -9,51 +9,51 @@ import {
   ClockIcon,
   CalendarDaysIcon,
   CurrencyDollarIcon,
-  ChartPieIcon,
-  ChartBarIcon,
   CogIcon,
   UserIcon,
   ArrowRightOnRectangleIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
-  BriefcaseIcon,
-  DocumentTextIcon,
-  AcademicCapIcon,
-  FolderIcon,
-  UserPlusIcon
 } from '@heroicons/react/24/outline'
 import { useAuth } from '../../contexts/AuthContext'
 import { cn } from '../../utils/cn'
 
-const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon, roles: ['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE'] },
-  { name: 'Employees', href: '/employees', icon: UsersIcon, roles: ['ADMIN', 'HR', 'MANAGER'] },
-  { name: 'Departments', href: '/departments', icon: BuildingOfficeIcon, roles: ['ADMIN', 'HR', 'MANAGER'] },
-  { name: 'Attendance', href: '/attendance', icon: ClockIcon, roles: ['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE'] },
-  { name: 'Leave Requests', href: '/leave', icon: CalendarDaysIcon, roles: ['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE'] },
-  { name: 'Payroll', href: '/payroll', icon: CurrencyDollarIcon, roles: ['ADMIN', 'HR'] },
-//  { name: 'Performance', href: '/performance', icon: ChartPieIcon, roles: ['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE'] },
-//  { name: 'Job Postings', href: '/job-postings', icon: BriefcaseIcon, roles: ['ADMIN', 'HR'] },
-//  { name: 'Applications', href: '/job-applications', icon: DocumentTextIcon, roles: ['ADMIN', 'HR'] },
-//  { name: 'Interviews', href: '/interviews', icon: UserPlusIcon, roles: ['ADMIN', 'HR'] },
-//  { name: 'Training', href: '/training', icon: AcademicCapIcon, roles: ['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE'] },
-//  { name: 'Training Records', href: '/training-records', icon: AcademicCapIcon, roles: ['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE'] },
-//  { name: 'Onboarding', href: '/onboarding', icon: UserPlusIcon, roles: ['ADMIN', 'HR', 'EMPLOYEE'] },
-//  { name: 'Documents', href: '/documents', icon: FolderIcon, roles: ['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE'] },
-//  { name: 'Reports', href: '/reports', icon: ChartBarIcon, roles: ['ADMIN', 'HR', 'MANAGER'] },
-//  { name: 'Analytics', href: '/analytics', icon: ChartBarIcon, roles: ['ADMIN', 'HR', 'MANAGER'] },
-  { name: 'Settings', href: '/settings', icon: CogIcon, roles: ['ADMIN'] },
+// Admin/HR/Manager navigation
+const adminNavigation = [
+  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
+  { name: 'Employees', href: '/employees', icon: UsersIcon },
+  { name: 'Departments', href: '/departments', icon: BuildingOfficeIcon },
+  { name: 'Attendance', href: '/attendance', icon: ClockIcon },
+  { name: 'Leave Requests', href: '/leave', icon: CalendarDaysIcon },
+  { name: 'Payroll', href: '/payroll', icon: CurrencyDollarIcon },
+  { name: 'Settings', href: '/settings', icon: CogIcon },
 ]
 
-const Sidebar = ({ open, setOpen }) => {
+// Employee-only navigation
+const employeeNavigation = [
+  { name: 'Dashboard', href: '/user/dashboard', icon: HomeIcon },
+  { name: 'Attendance', href: '/user/time', icon: ClockIcon },
+  { name: 'Leave Requests', href: '/user/leave', icon: CalendarDaysIcon },
+]
+
+const Sidebar = ({ open, setOpen, collapsed, setCollapsed }) => {
   const location = useLocation()
   const navigate = useNavigate()
-  const { user, hasPermission, logout } = useAuth()
+  const { user, logout } = useAuth()
 
-  const filteredNavigation = navigation.filter(item => 
-    hasPermission(item.roles)
-  );
+  // Get user role safely - normalize to uppercase for comparison
+  const userRole = (user?.role || 'EMPLOYEE').toUpperCase()
   
+  // Determine which navigation to use based on user role
+  const getNavigation = () => {
+    if (userRole === 'EMPLOYEE') {
+      return employeeNavigation
+    }
+    return adminNavigation
+  }
+
+  const currentNavigation = getNavigation()
+
   const handleLogout = async () => {
     try {
       await logout()
@@ -71,7 +71,9 @@ const Sidebar = ({ open, setOpen }) => {
             <div className="h-8 w-8 bg-indigo-600 rounded-lg flex items-center justify-center mr-3">
               <UsersIcon className="h-5 w-5 text-white" />
             </div>
-            <h1 className="text-xl font-bold text-gray-900">HRMS Pro</h1>
+            <h1 className="text-xl font-bold text-gray-900">
+              {userRole === 'EMPLOYEE' ? 'Employee Portal' : 'HRMS Pro'}
+            </h1>
           </div>
         )}
         <button 
@@ -89,7 +91,7 @@ const Sidebar = ({ open, setOpen }) => {
         <ul role="list" className="flex flex-1 flex-col gap-y-2">
           <li>
             <ul role="list" className="space-y-1">
-              {filteredNavigation.map((item) => (
+              {currentNavigation.map((item) => (
                 <li key={item.name}>
                   <Link
                     to={item.href}
@@ -119,20 +121,36 @@ const Sidebar = ({ open, setOpen }) => {
           </li>
           <li className="mt-auto">
             <div className="border-t border-gray-200 pt-6">
-            <button
-              onClick={handleLogout}
-              className={cn(
-                'group flex gap-x-3 rounded-md p-3 text-sm font-medium leading-6 text-gray-700 hover:bg-red-50 hover:text-red-600 w-full transition-colors mt-1',
-                collapsed ? 'justify-center' : ''
+              {/* User Profile Info - Only show when not collapsed */}
+              {!collapsed && (
+                <div className="flex items-center gap-x-3 px-3 py-3 text-sm font-semibold leading-6 text-gray-900">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100">
+                    <UserIcon className="h-5 w-5 text-indigo-600" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="truncate">{user?.name || user?.email || 'User'}</span>
+                    <span className="text-xs font-normal text-gray-500 capitalize">
+                      {userRole}
+                    </span>
+                  </div>
+                </div>
               )}
-              title={collapsed ? 'Sign Out' : ''}
-            >
-              <ArrowRightOnRectangleIcon
-                className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-red-600"
-                aria-hidden="true"
-              />
-              {!collapsed && <span>Sign Out</span>}
-            </button>
+              
+              {/* Sign Out Button */}
+              <button
+                onClick={handleLogout}
+                className={cn(
+                  'group flex gap-x-3 rounded-md p-3 text-sm font-medium leading-6 text-gray-700 hover:bg-red-50 hover:text-red-600 w-full transition-colors mt-1',
+                  collapsed ? 'justify-center' : ''
+                )}
+                title={collapsed ? 'Sign Out' : ''}
+              >
+                <ArrowRightOnRectangleIcon
+                  className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-red-600"
+                  aria-hidden="true"
+                />
+                {!collapsed && <span>Sign Out</span>}
+              </button>
             </div>
           </li>
         </ul>
@@ -191,7 +209,7 @@ const Sidebar = ({ open, setOpen }) => {
         </Dialog>
       </Transition.Root>
 
-      {/* Desktop sidebar */}
+      {/* Desktop sidebar - ONLY ONE SIDEBAR */}
       <div className={cn(
         "hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col",
         "transition-all duration-300 ease-in-out",

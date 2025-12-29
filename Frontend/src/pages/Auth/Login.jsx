@@ -19,14 +19,34 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+    watch
+  } = useForm({
+    defaultValues: {
+      role: 'employee' // Default role
+    }
+  })
+
+  const selectedRole = watch('role')
 
   const onSubmit = async (data) => {
     setLoading(true)
     try {
       const result = await login(data)
       if (result.success) {
-        navigate(from, { replace: true })
+        // Determine redirect path based on user role from response
+        const userRole = data.role?.toLowerCase() || 'employee'
+        let redirectPath = '/dashboard'
+        
+        if (userRole === 'employee') {
+          redirectPath = '/user/dashboard'
+        } else if (['admin', 'hr', 'manager'].includes(userRole)) {
+          redirectPath = '/dashboard'
+        }
+
+        // Use the from location if it exists, otherwise use role-based redirect
+        const finalPath = from !== '/dashboard' ? from : redirectPath
+        
+        navigate(finalPath, { replace: true })
       }
     } finally {
       setLoading(false)
@@ -58,7 +78,35 @@ const Login = () => {
           <div className="p-8 backdrop-blur-sm bg-white/5">
             <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-5">
-                {/* Email Field */}
+                {/* Role Selection Dropdown */}
+                <div>
+                  <label htmlFor="role" className="block text-sm font-medium text-white/80 mb-1">
+                    Login As
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="role"
+                      className="w-full px-4 py-3 rounded-lg backdrop-blur-sm bg-white/10 border border-white/20 focus:ring-2 focus:ring-sky-300 focus:border-sky-300 focus:outline-none transition duration-200 text-white appearance-none"
+                      {...register('role', {
+                        required: 'Please select a role',
+                      })}
+                    >
+                      <option value="employee" className="bg-gray-800 text-white">Employee</option>
+                      <option value="admin" className="bg-gray-800 text-white">Admin</option>
+                    </select>
+                    {/* Custom dropdown arrow */}
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white/70">
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                  {errors.role && (
+                    <p className="mt-2 text-sm text-red-300">{errors.role.message}</p>
+                  )}
+                </div>
+
+                {/* Email / Username Field */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-1">
                     Email address
@@ -68,14 +116,10 @@ const Login = () => {
                       id="email"
                       type="email"
                       autoComplete="email"
-                      placeholder="you@example.com"
+                      placeholder="admin@example.com"
                       className={`w-full px-4 py-3 rounded-lg backdrop-blur-sm bg-white/10 border ${errors.email ? 'border-red-400/50 focus:ring-red-400 focus:border-red-400' : 'border-white/20 focus:ring-sky-300 focus:border-sky-300'} focus:ring-2 focus:outline-none transition duration-200 text-white placeholder-white/50`}
                       {...register('email', {
-                        required: 'Email is required',
-                        pattern: {
-                          value: /^\S+@\S+$/i,
-                          message: 'Invalid email address',
-                        },
+                        required: 'Email or password is required',
                       })}
                     />
                   </div>
@@ -153,10 +197,10 @@ const Login = () => {
                   {loading ? (
                     <>
                       <LoadingSpinner size="sm" className="mr-2 text-white" />
-                      Signing in...
+                      Signing in as {selectedRole === 'admin' ? 'Admin' : 'Employee'}...
                     </>
                   ) : (
-                    'Sign in'
+                    `Sign in as ${selectedRole === 'admin' ? 'Admin' : 'Employee'}`
                   )}
                 </button>
               </div>

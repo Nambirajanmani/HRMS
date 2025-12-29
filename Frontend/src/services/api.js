@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // ======================= AXIOS INSTANCE =======================
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -175,7 +175,15 @@ export const departmentAPI = {
   create: (data) => post('/departments', data),
   update: (id, data) => put(`/departments/${id}`, data),
   delete: (id) => del(`/departments/${id}`),
+  toggleStatus: (id) => patch(`/departments/${id}/toggle-status`),
   getHierarchy: (id) => get(`/departments/${id}/hierarchy`)
+};
+
+// Time Tracking API
+export const timeAPI = {
+  getHistory: (userId) => get(`/employees/time/${userId}`),
+  checkIn: (userId) => post(`/employees/time/checkin/${userId}`, {}),
+  checkOut: (userId) => post(`/employees/time/checkout/${userId}`, {})
 };
 
 // Attendance API
@@ -192,8 +200,12 @@ export const leaveAPI = {
   getRequests: (params) => get('/leave', { params }),
   getById: (id) => get(`/leave/${id}`),
   create: (data) => post('/leave', data),
+  createRequest: (data) => post('/leave', data),
   update: (id, data) => put(`/leave/${id}`, data),
   delete: (id) => del(`/leave/${id}`),
+  // Employee specific
+  getMyLeaveBalance: () => get('/leave-balances/my'),
+  getMyLeaveHistory: () => get('/leave/my-history'),
   // Leave policies
   getPolicies: (params) => get('/leave-policies', { params }),
   createPolicy: (data) => post('/leave-policies', data),

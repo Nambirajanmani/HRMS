@@ -91,7 +91,7 @@ const Dashboard = () => {
       icon: PlusIcon,
       href: '/employees/create',
       color: 'bg-indigo-500',
-      roles: ['ADMIN', 'HR']
+      roles: ['ADMIN', 'HR', 'admin', 'hr']
     },
     {
       title: 'View Reports',

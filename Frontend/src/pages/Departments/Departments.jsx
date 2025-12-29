@@ -194,13 +194,42 @@ const Departments = () => {
       onError: (error) => {
         console.error('Failed to delete department:', error)
         let message = 'Failed to delete department'
-        
+
         if (error?.response?.data?.message) {
           message = error.response.data.message
         } else if (error?.message) {
           message = error.message
         }
-        
+
+        toast.error(message)
+      }
+    }
+  )
+
+  // Toggle status mutation
+  const toggleStatusMutation = useMutation(
+    async (id) => {
+      console.log('Toggling department status:', id)
+      const response = await departmentAPI.toggleStatus(id)
+      console.log('Toggle status response:', response)
+      return response
+    },
+    {
+      onSuccess: (data) => {
+        console.log('Department status toggled successfully:', data)
+        queryClient.invalidateQueries(['departments'])
+        toast.success(data.message || 'Department status updated successfully!')
+      },
+      onError: (error) => {
+        console.error('Failed to toggle department status:', error)
+        let message = 'Failed to update department status'
+
+        if (error?.response?.data?.message) {
+          message = error.response.data.message
+        } else if (error?.message) {
+          message = error.message
+        }
+
         toast.error(message)
       }
     }
@@ -228,6 +257,12 @@ const Departments = () => {
       deleteMutation.mutate(id)
     }
   }, [deleteMutation])
+
+  const handleToggleStatus = useCallback((department) => {
+    if (window.confirm(`Are you sure you want to ${department.isActive ? 'deactivate' : 'activate'} this department?`)) {
+      toggleStatusMutation.mutate(department.id)
+    }
+  }, [toggleStatusMutation])
 
   const onSubmit = useCallback((formData) => {
     console.log('Form submitted with data:', formData)
@@ -349,7 +384,7 @@ const Departments = () => {
             {pagination?.total || departments.length || 0} departments in your organization
           </p>
         </div>
-        {hasPermission && hasPermission(['ADMIN', 'HR']) && (
+        {hasPermission && hasPermission(['ADMIN', 'HR', 'admin', 'hr']) && (
           <button 
             onClick={() => setShowModal(true)} 
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-150"
@@ -416,7 +451,7 @@ const Departments = () => {
                   <Table.Head className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Status
                   </Table.Head>
-                  {hasPermission && hasPermission(['ADMIN', 'HR']) && (
+                  {hasPermission && hasPermission(['ADMIN', 'HR', 'admin', 'hr']) && (
                     <Table.Head className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Actions
                     </Table.Head>
@@ -466,11 +501,18 @@ const Departments = () => {
                       </div>
                     </Table.Cell>
                     <Table.Cell className="px-6 py-4 whitespace-nowrap">
-                      <Badge variant={department.isActive ? 'success' : 'error'}>
-                        {department.isActive ? 'Active' : 'Inactive'}
-                      </Badge>
+                      <button
+                        onClick={() => handleToggleStatus(department)}
+                        disabled={toggleStatusMutation.isLoading}
+                        className="cursor-pointer hover:opacity-80 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                        title={`Click to ${department.isActive ? 'deactivate' : 'activate'} department`}
+                      >
+                        <Badge variant={department.isActive ? 'success' : 'error'}>
+                          {department.isActive ? 'Active' : 'Inactive'}
+                        </Badge>
+                      </button>
                     </Table.Cell>
-                    {hasPermission && hasPermission(['ADMIN', 'HR']) && (
+                    {hasPermission && hasPermission(['ADMIN', 'HR', 'admin', 'hr']) && (
                       <Table.Cell className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <div className="flex justify-end space-x-3">
                           <button
@@ -484,8 +526,8 @@ const Departments = () => {
                           <button
                             onClick={() => handleDelete(department.id)}
                             className="text-red-600 hover:text-red-900 transition-colors disabled:opacity-50"
-                            title="Delete department"
-                            disabled={deleteMutation.isLoading}
+                            title={(department._count?.employees || 0) > 0 ? "Cannot delete department with active employees" : "Delete department"}
+                            disabled={deleteMutation.isLoading || (department._count?.employees || 0) > 0}
                           >
                             <TrashIcon className="h-5 w-5" />
                           </button>
@@ -510,7 +552,7 @@ const Departments = () => {
                   'Get started by creating your first department'
                 }
               </p>
-              {hasPermission && hasPermission(['ADMIN', 'HR']) && !search && (
+              {hasPermission && hasPermission(['ADMIN', 'HR', 'admin', 'hr']) && !search && (
                 <button 
                   onClick={() => setShowModal(true)} 
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-150"

@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Employees from './pages/Employees/Employees';
 import EmployeeDetail from './pages/Employees/EmployeeDetail';
 import CreateEmployee from './pages/Employees/CreateEmployee';
+import EditEmployee from './pages/Employees/EditEmployee';
 import Departments from './pages/Departments/Departments';
 import Attendance from './pages/Attendance/Attendance';
 import LeaveRequests from './pages/Leave/LeaveRequests';
@@ -26,6 +27,9 @@ import OnboardingTasks from './pages/Onboarding/OnboardingTasks';
 import Documents from './pages/Documents/Documents';
 import Analytics from './pages/Analytics/Analytics';
 import LoadingSpinner from './components/UI/LoadingSpinner';
+import UserDashboard from './pages/user/dashboard';
+import EmployeeLeaveRequest from './pages/user/leaverequest';
+import Time from './pages/user/time'; // Changed to uppercase 'Time'
 
 function App() {
   const { user, loading } = useAuth();
@@ -54,12 +58,40 @@ function App() {
     <ErrorBoundary>
       <Layout>
         <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          {/* Default redirect based on user role */}
+          <Route 
+            path="/" 
+            element={
+              (user?.role || '').toLowerCase() === 'employee' 
+                ? <Navigate to="/user/dashboard" replace /> 
+                : <Navigate to="/dashboard" replace />
+            } 
+          />
+          
+          {/* Admin Dashboard - Only for non-employee roles */}
+          <Route 
+            path="/dashboard" 
+            element={
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager']}>
+                <Dashboard />
+              </ProtectedRoute>
+            } 
+          />
+          
+          {/* Employee Dashboard - Only for employee role */}
+          <Route 
+            path="/user/dashboard" 
+            element={
+              <ProtectedRoute requiredRoles={['employee']}>
+                <UserDashboard />
+              </ProtectedRoute>
+            } 
+          />
+          
           <Route 
             path="/employees" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'MANAGER']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager']}>
                 <Employees />
               </ProtectedRoute>
             } 
@@ -67,26 +99,66 @@ function App() {
           <Route 
             path="/employees/create" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr']}>
                 <CreateEmployee />
               </ProtectedRoute>
             } 
           />
-          <Route path="/employees/:id" element={<EmployeeDetail />} />
           <Route 
-            path="/departments" 
+            path="/employees/:id" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'MANAGER']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager', 'employee']}>
+                <EmployeeDetail />
+              </ProtectedRoute>
+            } 
+          />
+          <Route
+            path="/employees/:id/edit"
+            element={
+              <ProtectedRoute requiredRoles={['admin', 'hr']}>
+                <EditEmployee />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/departments"
+            element={
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager']}>
                 <Departments />
               </ProtectedRoute>
             } 
           />
-          <Route path="/attendance" element={<Attendance />} />
-          <Route path="/leave" element={<LeaveRequests />} />
+          <Route
+            path="/user/time"
+            element={ 
+              <ProtectedRoute requiredRoles={['employee']}>
+                <Time />
+              </ProtectedRoute>
+            } 
+          />
+          
+          {/* Common routes accessible to both admin and employee */}
+          <Route 
+            path="/attendance" 
+            element={
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager', 'employee']}>
+                <Attendance />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/leave" 
+            element={
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager', 'employee']}>
+                <LeaveRequests />
+              </ProtectedRoute>
+            } 
+          />
+          
           <Route 
             path="/payroll" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'EMPLOYEE']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr']}>
                 <Payroll />
               </ProtectedRoute>
             } 
@@ -94,7 +166,7 @@ function App() {
           <Route 
             path="/performance" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager', 'employee']}>
                 <Performance />
               </ProtectedRoute>
             } 
@@ -102,7 +174,7 @@ function App() {
           <Route 
             path="/reports" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'MANAGER']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager']}>
                 <Reports />
               </ProtectedRoute>
             } 
@@ -110,7 +182,7 @@ function App() {
           <Route 
             path="/analytics" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'MANAGER']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager']}>
                 <Analytics />
               </ProtectedRoute>
             } 
@@ -118,7 +190,7 @@ function App() {
           <Route 
             path="/settings" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN']}>
+              <ProtectedRoute requiredRoles={['admin']}>
                 <Settings />
               </ProtectedRoute>
             } 
@@ -126,7 +198,7 @@ function App() {
           <Route 
             path="/job-postings" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr']}>
                 <JobPostings />
               </ProtectedRoute>
             } 
@@ -134,7 +206,7 @@ function App() {
           <Route 
             path="/job-applications" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr']}>
                 <JobApplications />
               </ProtectedRoute>
             } 
@@ -142,7 +214,7 @@ function App() {
           <Route 
             path="/interviews" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr']}>
                 <Interviews />
               </ProtectedRoute>
             } 
@@ -150,7 +222,7 @@ function App() {
           <Route 
             path="/training" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager', 'employee']}>
                 <TrainingPrograms />
               </ProtectedRoute>
             } 
@@ -158,7 +230,7 @@ function App() {
           <Route 
             path="/training-records" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager', 'employee']}>
                 <TrainingRecords />
               </ProtectedRoute>
             } 
@@ -166,7 +238,7 @@ function App() {
           <Route 
             path="/onboarding" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'EMPLOYEE']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'employee']}>
                 <OnboardingTasks />
               </ProtectedRoute>
             } 
@@ -174,14 +246,31 @@ function App() {
           <Route 
             path="/documents" 
             element={
-              <ProtectedRoute requiredRoles={['ADMIN', 'HR', 'MANAGER', 'EMPLOYEE']}>
+              <ProtectedRoute requiredRoles={['admin', 'hr', 'manager', 'employee']}>
                 <Documents />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/user/leave" 
+            element={  
+              <ProtectedRoute requiredRoles={['employee']}>
+                <EmployeeLeaveRequest />
               </ProtectedRoute>
             } 
           />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Navigate to="/dashboard" replace />} />
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          
+          {/* Catch all route - redirect based on role */}
+          <Route 
+            path="*" 
+            element={
+              (user?.role || '').toLowerCase() === 'employee' 
+                ? <Navigate to="/user/dashboard" replace /> 
+                : <Navigate to="/dashboard" replace />
+            } 
+          />
         </Routes>
       </Layout>
     </ErrorBoundary>

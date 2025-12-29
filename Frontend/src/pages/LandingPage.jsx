@@ -4,8 +4,8 @@ import bgImage from '../assets/landingpage.jpg'; // adjust path if needed
 
 const LandingPage = () => {
   return (
-    <div 
-      className="min-h-screen bg-gray-50 bg-cover bg-center" 
+    <div
+      className="min-h-screen bg-gray-50 bg-cover bg-center"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       {/* Overlay for readability */}
@@ -21,8 +21,8 @@ const LandingPage = () => {
                 <span className="ml-2 text-2xl font-bold text-white">HR Pro</span>
               </div>
               <div className="flex items-center">
-                <Link to="/login" className="text-gray-200 hover:text-white text-sm font-medium">
-                  Sign In
+                <Link to="/login" className="text-blue-500 hover:text-blue-400 text-sm font-medium">
+                  Login 
                 </Link>
               </div>
             </div>
@@ -39,8 +39,8 @@ const LandingPage = () => {
             Streamline your HR processes with our all-in-one HRMS solution.
           </p>
           <div className="mt-8 flex justify-center">
-            <Link 
-              to="/login" 
+            <Link
+              to="/login"
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Get Started

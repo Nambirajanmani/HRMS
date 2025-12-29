@@ -1,10 +1,10 @@
 import { useState, useCallback, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { 
-  ArrowLeftIcon, 
-  PencilIcon, 
-  EnvelopeIcon, 
+import {
+  ArrowLeftIcon,
+  PencilIcon,
+  EnvelopeIcon,
   PhoneIcon,
   CalendarIcon,
   BuildingOfficeIcon,
@@ -28,7 +28,21 @@ const EmployeeDetail = () => {
   const navigate = useNavigate();
   const { user, hasPermission } = useAuth();
   const queryClient = useQueryClient();
-  
+
+  // Validate employee ID
+  if (!id || id === 'undefined' || !/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(id)) {
+    return (
+      <div className="text-center py-12">
+        <Alert variant="error" title="Invalid Employee ID">
+          The employee ID provided is invalid.
+        </Alert>
+        <Link to="/employees" className="btn-primary mt-4">
+          Back to Employees
+        </Link>
+      </div>
+    );
+  }
+
   const [activeTab, setActiveTab] = useState('overview');
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -181,8 +195,8 @@ const EmployeeDetail = () => {
         <div>
           <dt className="text-sm font-medium text-gray-500">Manager</dt>
           <dd className="text-sm text-gray-900">
-            {employee.manager ? 
-              `${employee.manager.firstName} ${employee.manager.lastName}` : 
+            {employee.manager ?
+              `${employee.manager.firstName} ${employee.manager.lastName}` :
               'N/A'
             }
           </dd>
@@ -365,8 +379,8 @@ const EmployeeDetail = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Link 
-            to="/employees" 
+          <Link
+            to="/employees"
             className="btn-outline hover:shadow-md transition-all duration-200"
           >
             <ArrowLeftIcon className="h-5 w-5 mr-2" />
@@ -403,7 +417,7 @@ const EmployeeDetail = () => {
 
       {/* Employee Profile Card */}
       <div className="card hover:shadow-md transition-shadow duration-200">
-        <div className="card-content">
+        <div className="card-content p-6">
           <div className="flex items-start space-x-6">
             <div className="flex-shrink-0">
               <div className="h-24 w-24 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center shadow-lg">
@@ -413,10 +427,10 @@ const EmployeeDetail = () => {
               </div>
             </div>
             <div className="flex-1 min-w-0">
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-2">Contact Information</h3>
-                  <div className="space-y-2">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium text-gray-500">Contact Information</h3>
+                  <div className="space-y-3">
                     <div className="flex items-center text-sm text-gray-900">
                       <EnvelopeIcon className="h-4 w-4 mr-2 text-gray-400" />
                       <a href={`mailto:${employee.email}`} className="hover:text-indigo-600 transition-colors">
@@ -433,9 +447,9 @@ const EmployeeDetail = () => {
                     )}
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-2">Employment Details</h3>
-                  <div className="space-y-2">
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium text-gray-500">Employment Details</h3>
+                  <div className="space-y-3">
                     <div className="flex items-center text-sm text-gray-900">
                       <BuildingOfficeIcon className="h-4 w-4 mr-2 text-gray-400" />
                       {employee.department?.name || 'N/A'}
@@ -450,9 +464,9 @@ const EmployeeDetail = () => {
                     </div>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-2">Status & Type</h3>
-                  <div className="space-y-2">
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium text-gray-500">Status & Type</h3>
+                  <div className="space-y-3">
                     <div>{getStatusBadge(employee.employmentStatus)}</div>
                     <div>{getEmploymentTypeBadge(employee.employmentType)}</div>
                     {employee.manager && (
@@ -477,25 +491,46 @@ const EmployeeDetail = () => {
           <div className="card-content">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {employee.subordinates.map((subordinate) => (
-                <Link
-                  key={subordinate.id}
-                  to={`/employees/${subordinate.id}`}
-                  className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                >
-                  <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                    <span className="text-xs font-medium text-indigo-800">
-                      {subordinate.firstName[0]}{subordinate.lastName[0]}
-                    </span>
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-gray-900">
-                      {subordinate.firstName} {subordinate.lastName}
+                subordinate.id ? (
+                  <Link
+                    key={subordinate.id}
+                    to={`/employees/${subordinate.id}`}
+                    className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                      <span className="text-xs font-medium text-indigo-800">
+                        {subordinate.firstName[0]}{subordinate.lastName[0]}
+                      </span>
                     </div>
-                    <div className="text-xs text-gray-500">
-                      {subordinate.position?.title || 'N/A'}
+                    <div>
+                      <div className="text-sm font-medium text-gray-900">
+                        {subordinate.firstName} {subordinate.lastName}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {subordinate.position?.title || 'N/A'}
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div
+                    key={`subordinate-${Math.random()}`}
+                    className="flex items-center p-3 bg-gray-50 rounded-lg"
+                  >
+                    <div className="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center mr-3">
+                      <span className="text-xs font-medium text-gray-600">
+                        ??
+                      </span>
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-gray-900">
+                        {subordinate.firstName} {subordinate.lastName}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        Invalid data
+                      </div>
                     </div>
                   </div>
-                </Link>
+                )
               ))}
             </div>
           </div>
@@ -503,82 +538,82 @@ const EmployeeDetail = () => {
       )}
 
       {/* Tabs */}
-      <div className="border-b border-gray-200">
-        <nav className="-mb-px flex space-x-8">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => handleTabChange(tab.id)}
-              className={cn(
-                'py-2 px-1 border-b-2 font-medium text-sm transition-colors',
-                activeTab === tab.id
-                  ? 'border-primary-500 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              )}
-            >
-              {tab.name}
-            </button>
-          ))}
-        </nav>
-      </div>
-
-      {/* Tab Content */}
-      <div className="card">
-        <div className="card-content">
-          {renderTabContent()}
-        </div>
-      </div>
-
-      {/* Delete Confirmation Modal */}
-      <Modal
-        open={showDeleteModal}
-        onClose={handleDeleteCancel}
-        title="Terminate Employee"
-        size="md"
+     <div className="border-b border-gray-200">
+  <nav className="-mb-px flex space-x-8">
+    {tabs.map((tab) => (
+      <button
+        key={tab.id}
+        onClick={() => handleTabChange(tab.id)}
+        className={cn(
+          'py-2 px-1 border-b-2 font-medium text-sm transition-colors',
+          activeTab === tab.id
+            ? 'border-primary-500 text-primary-600'
+            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+        )}
       >
-        <div className="space-y-4">
-          <div className="flex items-center space-x-3">
-            <div className="flex-shrink-0">
-              <ExclamationTriangleIcon className="h-6 w-6 text-red-600" />
-            </div>
-            <div>
-              <h3 className="text-lg font-medium text-gray-900">
-                Terminate {employee.firstName} {employee.lastName}?
-              </h3>
-              <p className="text-sm text-gray-500">
-                This action will set the employee's status to terminated and deactivate their user account. 
-                This action can be reversed by updating the employee's status.
-              </p>
-            </div>
-          </div>
-          
-          <Alert variant="warning">
-            <strong>Warning:</strong> Make sure to reassign any subordinates before terminating this employee.
-          </Alert>
+        {tab.name}
+      </button>
+    ))}
+  </nav>
+</div>
 
-          <div className="flex justify-end space-x-3 pt-4">
-            <button
-              type="button"
-              onClick={handleDeleteCancel}
-              className="btn-outline"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleDeleteConfirm}
-              disabled={deleteMutation.isLoading}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 transition-colors"
-            >
-              {deleteMutation.isLoading && (
-                <LoadingSpinner size="sm" className="mr-2" />
-              )}
-              Terminate Employee
-            </button>
-          </div>
-        </div>
-      </Modal>
+{/* Tab Content */}
+<div className="card">
+  <div className="card-content p-6">
+    {renderTabContent()}
+  </div>
+</div>
+
+{/* Delete Confirmation Modal */}
+<Modal
+  open={showDeleteModal}
+  onClose={handleDeleteCancel}
+  title="Terminate Employee"
+  size="md"
+>
+  <div className="p-6 space-y-4">
+    <div className="flex items-center space-x-3">
+      <div className="flex-shrink-0">
+        <ExclamationTriangleIcon className="h-6 w-6 text-red-600" />
+      </div>
+      <div>
+        <h3 className="text-lg font-medium text-gray-900">
+          Terminate {employee.firstName} {employee.lastName}?
+        </h3>
+        <p className="text-sm text-gray-500 mt-1">
+          This action will set the employee's status to terminated and deactivate their user account.
+          This action can be reversed by updating the employee's status.
+        </p>
+      </div>
     </div>
-  );
+
+    <Alert variant="warning">
+      <strong>Warning:</strong> Make sure to reassign any subordinates before terminating this employee.
+    </Alert>
+
+    <div className="flex justify-end space-x-3 pt-4">
+      <button
+        type="button"
+        onClick={handleDeleteCancel}
+        className="btn-outline"
+      >
+        Cancel
+      </button>
+      <button
+        onClick={handleDeleteConfirm}
+        disabled={deleteMutation.isLoading}
+        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 transition-colors"
+      >
+        {deleteMutation.isLoading && (
+          <LoadingSpinner size="sm" className="mr-2" />
+        )}
+        Terminate Employee
+      </button>
+    </div>
+  </div>
+</Modal>
+</div>
+);
 };
 
 export default EmployeeDetail;

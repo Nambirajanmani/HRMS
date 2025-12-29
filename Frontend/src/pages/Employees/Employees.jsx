@@ -363,15 +363,19 @@ const Employees = () => {
                   </div>
                 </Table.Cell>
                 <Table.Cell className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <Link
-                    to={`/employees/${employee.id}`}
-                    className="text-indigo-600 hover:text-indigo-900 transition-colors font-medium group flex items-center justify-end"
-                  >
-                    View
-                    <svg className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                  {employee.id ? (
+                    <Link
+                      to={`/employees/${employee.id}`}
+                      className="text-indigo-600 hover:text-indigo-900 transition-colors font-medium group flex items-center justify-end"
+                    >
+                      View
+                      <svg className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  ) : (
+                    <span className="text-gray-400">N/A</span>
+                  )}
                 </Table.Cell>
               </Table.Row>
             ))}
@@ -395,7 +399,7 @@ const Employees = () => {
         title="No employees found"
         description="Try adjusting your search or filter criteria"
         action={
-          hasPermission && hasPermission(['ADMIN', 'HR']) && (
+          hasPermission && hasPermission(['SUPERADMIN', 'ADMIN', 'HR']) && (
             <Link
               to="/employees/create"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-br from-indigo-600 to-indigo-500 hover:from-indigo-700 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-150 transform hover:-translate-y-0.5 hover:shadow-md"
@@ -455,7 +459,7 @@ const Employees = () => {
             {pagination?.total || 0} {pagination?.total === 1 ? 'employee' : 'employees'} in your organization
           </p>
         </div>
-        {hasPermission && hasPermission(['ADMIN', 'HR']) && (
+        {hasPermission && hasPermission(['SUPERADMIN', 'ADMIN', 'HR']) && (
           <Link 
             to="/employees/create" 
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-br from-indigo-600 to-indigo-500 hover:from-indigo-700 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-150 transform hover:-translate-y-0.5 hover:shadow-md"

@@ -18,21 +18,35 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
-    if (token) {
-      fetchUser()
-    } else {
-      setLoading(false)
+    const storedUser = localStorage.getItem('user')
+    
+    if (token && storedUser) {
+      try {
+        const userData = JSON.parse(storedUser)
+        setUser(userData)
+      } catch {
+        localStorage.removeItem('user')
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+      }
     }
+    setLoading(false)
   }, [])
 
   const fetchUser = async () => {
     try {
       const response = await authAPI.me()
       const payload = response.data?.data || response.data
-      setUser(payload?.user || null)
+      const userData = payload?.user || null
+      
+      if (userData) {
+        setUser(userData)
+        localStorage.setItem('user', JSON.stringify(userData))
+      }
     } catch {
       localStorage.removeItem('accessToken')
       localStorage.removeItem('refreshToken')
+      localStorage.removeItem('user')
       setUser(null)
     } finally {
       setLoading(false)
@@ -41,22 +55,33 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
+      // Call real backend API
       const response = await authAPI.login(credentials)
-      const payload = response.data?.data || response.data
-      const { user, accessToken, refreshToken } = payload || {}
+      const payload = response?.data || response
+      const userData = payload?.data?.user || payload?.user
+      const accessToken = payload?.data?.accessToken || payload?.accessToken
+      const refreshToken = payload?.data?.refreshToken || payload?.refreshToken
 
-      if (!accessToken || !refreshToken || !user) {
-        throw new Error('Invalid login response')
+      if (!userData || !accessToken) {
+        throw new Error('Invalid response from server')
       }
 
+      // Normalize role to lowercase for consistency
+      const userWithRole = {
+        ...userData,
+        role: (userData.role || 'employee').toLowerCase()
+      }
+
+      // Store tokens and user info
       localStorage.setItem('accessToken', accessToken)
       localStorage.setItem('refreshToken', refreshToken)
-      setUser(user)
+      localStorage.setItem('user', JSON.stringify(userWithRole))
+      setUser(userWithRole)
 
-      toast.success('Login successful!')
+      toast.success('Login successful')
       return { success: true }
     } catch (error) {
-      const message = error.response?.data?.message || error.message || 'Login failed'
+      const message = error?.message || error?.response?.data?.message || 'Login failed'
       toast.error(message)
       return { success: false, error: message }
     }
@@ -65,6 +90,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('accessToken')
     localStorage.removeItem('refreshToken')
+    localStorage.removeItem('user')
     setUser(null)
     toast.success('Logged out successfully')
   }
@@ -72,7 +98,8 @@ export const AuthProvider = ({ children }) => {
   const hasPermission = (requiredRoles) => {
     if (!user) return false
     if (!requiredRoles || requiredRoles.length === 0) return true
-    return requiredRoles.includes(user.role)
+    const userRole = (user.role || '').toLowerCase()
+    return requiredRoles.map(r => r.toLowerCase()).includes(userRole)
   }
 
   return (

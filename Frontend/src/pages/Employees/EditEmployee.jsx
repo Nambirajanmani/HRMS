@@ -1,6 +1,6 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useMutation, useQuery } from 'react-query';
 import { ArrowLeftIcon, UserPlusIcon } from '@heroicons/react/24/outline';
 import { employeeAPI, departmentAPI, positionAPI } from '../../services/api';
@@ -12,9 +12,12 @@ import { cn } from '../../utils/cn';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
 
-const CreateEmployee = () => {
+const EditEmployee = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(1);
+  const [searchParams] = useSearchParams();
+  const initialStep = parseInt(searchParams.get('step')) || 1;
+  const [currentStep, setCurrentStep] = useState(initialStep);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
@@ -57,6 +60,16 @@ const CreateEmployee = () => {
     }
   });
 
+  // Fetch existing employee data
+  const { data: employeeData, isLoading: employeeLoading, error: employeeError } = useQuery(
+    ['employee', id],
+    () => employeeAPI.getById(id),
+    {
+      enabled: !!id,
+      staleTime: 5 * 60 * 1000,
+    }
+  );
+
   // Fetch data for dropdowns
   const { data: departmentsData, isLoading: departmentsLoading } = useQuery(
     'departments',
@@ -76,23 +89,57 @@ const CreateEmployee = () => {
     { staleTime: 5 * 60 * 1000 }
   );
 
-  // Create employee mutation with proper error handling
-  const createEmployeeMutation = useMutation(
-    (data) => employeeAPI.create(data),
+  // Populate form when employee data is loaded
+  useEffect(() => {
+    if (employeeData?.data) {
+      const employee = employeeData.data;
+      reset({
+        employeeId: employee.employeeId || '',
+        firstName: employee.firstName || '',
+        lastName: employee.lastName || '',
+        email: employee.email || '',
+        hireDate: employee.hireDate ? format(new Date(employee.hireDate), 'yyyy-MM-dd') : '',
+        employmentType: employee.employmentType || 'FULL_TIME',
+        employmentStatus: employee.employmentStatus || 'ACTIVE',
+        middleName: employee.middleName || '',
+        phone: employee.phone || '',
+        dateOfBirth: employee.dateOfBirth ? format(new Date(employee.dateOfBirth), 'yyyy-MM-dd') : '',
+        gender: employee.gender || '',
+        maritalStatus: employee.maritalStatus || '',
+        nationality: employee.nationality || '',
+        address: employee.address || '',
+        city: employee.city || '',
+        state: employee.state || '',
+        country: employee.country || '',
+        zipCode: employee.zipCode || '',
+        emergencyContactName: employee.emergencyContactName || '',
+        emergencyContactPhone: employee.emergencyContactPhone || '',
+        emergencyContactRelation: employee.emergencyContactRelation || '',
+        departmentId: employee.department?.id || '',
+        positionId: employee.position?.id || '',
+        managerId: employee.manager?.id || '',
+        baseSalary: employee.baseSalary ? employee.baseSalary.toString() : ''
+      });
+    }
+  }, [employeeData, reset]);
+
+  // Update employee mutation
+  const updateEmployeeMutation = useMutation(
+    (data) => employeeAPI.update(id, data),
     {
-      onSuccess: (data) => {
-        toast.success('Employee created successfully!');
-        reset(); // Reset form after successful submission
-        navigate(`/employees/${data.employee.id}/edit?step=4`);
+      onSuccess: () => {
+        toast.success('Employee updated successfully!');
+        reset();
+        navigate(`/employees/${id}`);
       },
       onError: (error) => {
-        console.error('Create employee error:', {
+        console.error('Update employee error:', {
           message: error.message,
           response: error.response?.data,
           stack: error.stack
         });
 
-        let errorMessage = 'Failed to create employee';
+        let errorMessage = 'Failed to update employee';
         if (error.response?.data?.errors) {
           errorMessage = error.response.data.errors
             .map(err => `${err.field}: ${err.message}`)
@@ -294,13 +341,13 @@ const CreateEmployee = () => {
         formattedData.baseSalary = parseFloat(data.baseSalary);
       }
 
-      console.log('Submitting employee data:', formattedData);
-      await createEmployeeMutation.mutateAsync(formattedData);
+      console.log('Updating employee data:', formattedData);
+      await updateEmployeeMutation.mutateAsync(formattedData);
     } catch (error) {
       console.error('Submit error:', error);
       // Error handling is done in mutation
     }
-  }, [createEmployeeMutation]);
+  }, [updateEmployeeMutation, id]);
 
   // Render step indicator
   const renderStepIndicator = () => (
@@ -325,16 +372,16 @@ const CreateEmployee = () => {
                 currentStep > step.id
                   ? 'bg-indigo-600 border-indigo-600'
                   : currentStep === step.id
-                    ? 'border-indigo-600 bg-white'
-                    : 'border-gray-300 bg-white'
+                  ? 'border-indigo-600 bg-white'
+                  : 'border-gray-300 bg-white'
               )}>
                 <span className={cn(
                   'text-sm font-medium',
                   currentStep > step.id
                     ? 'text-white'
                     : currentStep === step.id
-                      ? 'text-indigo-600'
-                      : 'text-gray-500'
+                    ? 'text-indigo-600'
+                    : 'text-gray-500'
                 )}>
                   {step.id}
                 </span>
@@ -426,30 +473,20 @@ const CreateEmployee = () => {
             <FormField
               name="phone"
               control={control}
-              type="number"
+              type="tel"
               label="Phone Number"
-              placeholder="Enter 10-digit number"
+              placeholder="+1 (555) 123-4567"
               rules={{
                 pattern: {
-                  value: /^\d{10}$/,
-                  message: "Please enter exactly 10 digits. Only numbers (0-9) are allowed. No letters or special characters."
-                },
-                min: {
-                  value: 0,
-                  message: "Phone number cannot be negative"
-                }
-              }}
-              onInput={(e) => {
-                // Limit to 10 digits
-                if (e.target.value.length > 10) {
-                  e.target.value = e.target.value.slice(0, 10);
+                  value: /^\+?[\d\s\-\(\)]+$/,
+                  message: 'Invalid phone number format'
                 }
               }}
             />
-
-
           </div>
+          
         );
+        
 
       case 2:
         return (
@@ -554,13 +591,7 @@ const CreateEmployee = () => {
                 type="date"
                 label="Hire Date"
                 required
-                rules={{
-                  required: 'Hire date is required',
-                  pattern: {
-                    value: /^\d{4}-\d{2}-\d{2}$/,
-                    message: 'Invalid date format (yyyy-MM-dd)'
-                  }
-                }}
+                rules={{ required: 'Hire date is required' }}
               />
               <FormField
                 name="baseSalary"
@@ -663,11 +694,11 @@ const CreateEmployee = () => {
                     control={control}
                     type="tel"
                     label="Contact Phone"
-                    placeholder="Enter 10-digit number"
+                    placeholder="+1 (555) 987-6543"
                     rules={{
                       pattern: {
-                        value: /^\d{10}$/,
-                        message: "Please enter exactly 10 digits. Only numbers (0-9) are allowed. Do not use letters, spaces, or special characters."
+                        value: /^\+?[\d\s\-\(\)]+$/,
+                        message: 'Invalid phone format'
                       }
                     }}
                   />
@@ -706,7 +737,7 @@ const CreateEmployee = () => {
         )}
       </div>
       <div className="flex space-x-3">
-        <Link to="/employees" className="btn-outline">
+        <Link to={`/employees/${id}`} className="btn-outline">
           Cancel
         </Link>
         {currentStep < steps.length ? (
@@ -726,12 +757,12 @@ const CreateEmployee = () => {
             {isSubmitting ? (
               <>
                 <LoadingSpinner size="sm" className="mr-2" />
-                Creating...
+                Updating...
               </>
             ) : (
               <>
                 <UserPlusIcon className="h-5 w-5 mr-2" />
-                Create Employee
+                Update Employee
               </>
             )}
           </button>
@@ -740,25 +771,43 @@ const CreateEmployee = () => {
     </div>
   );
 
-  // Add debug information to help troubleshoot
-  console.log('Current form values:', getValues());
-  console.log('Available managers:', managers);
-  console.log('Form errors:', errors);
+  // Loading state
+  if (employeeLoading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <LoadingSpinner size="lg" />
+      </div>
+    );
+  }
+
+  // Error state
+  if (employeeError) {
+    return (
+      <div className="text-center py-12">
+        <Alert variant="error" title="Error">
+          {employeeError?.message || 'Failed to load employee data'}
+        </Alert>
+        <Link to="/employees" className="btn-primary mt-4">
+          Back to Employees
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Header */}
       <div className="flex items-center space-x-4">
         <Link
-          to="/employees"
+          to={`/employees/${id}`}
           className="btn-outline hover:shadow-md transition-all duration-200"
         >
           <ArrowLeftIcon className="h-5 w-5 mr-2" />
           Back
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Add New Employee</h1>
-          <p className="text-sm text-gray-500">Create a new employee record</p>
+          <h1 className="text-2xl font-bold text-gray-900">Edit Employee</h1>
+          <p className="text-sm text-gray-500">Update employee information</p>
         </div>
       </div>
 
@@ -811,4 +860,4 @@ const CreateEmployee = () => {
   );
 };
 
-export default CreateEmployee;
+export default EditEmployee;
