@@ -1,10 +1,9 @@
 import express from 'express';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../config/prisma.js';
 import { authenticate, authorize } from '../middleware/auth.js';
 import { AppError } from '../utils/errors.js';
 
 const router = express.Router();
-const prisma = new PrismaClient();
 
 // Helper: Validate date
 const parseDate = (value) => {

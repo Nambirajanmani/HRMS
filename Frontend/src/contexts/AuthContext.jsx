@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
       setUser(userWithRole)
 
       toast.success('Login successful')
-      return { success: true }
+      return { success: true, user: userWithRole }
     } catch (error) {
       const message = error?.message || error?.response?.data?.message || 'Login failed'
       toast.error(message)

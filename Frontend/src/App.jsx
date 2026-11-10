@@ -260,7 +260,14 @@ function App() {
             } 
           />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/login" element={<Navigate to="/dashboard" replace />} />
+          <Route
+            path="/login"
+            element={
+              (user?.role || '').toLowerCase() === 'employee'
+                ? <Navigate to="/user/dashboard" replace />
+                : <Navigate to="/dashboard" replace />
+            }
+          />
           
           {/* Catch all route - redirect based on role */}
           <Route 

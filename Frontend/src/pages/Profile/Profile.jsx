@@ -71,7 +71,15 @@ const Profile = () => {
     }
   )
 
-  const profile = profileData?.data?.user
+  // Backend returns { status, message, data: user }
+  const profile = profileData?.data?.user || profileData?.data
+
+  // Format a date safely; date-fns throws on invalid/missing dates
+  const formatDate = (value, pattern = 'MMM dd, yyyy', fallback = 'N/A') => {
+    if (!value) return fallback
+    const date = new Date(value)
+    return isNaN(date.getTime()) ? fallback : format(date, pattern)
+  }
 
   const onPasswordSubmit = (data) => {
     if (data.newPassword !== data.confirmPassword) {
@@ -96,7 +104,7 @@ const Profile = () => {
               <div className="flex-shrink-0">
                 <div className="h-24 w-24 rounded-full bg-gray-300 flex items-center justify-center">
                   <span className="text-2xl font-medium text-gray-700">
-                    {profile?.employee?.firstName?.[0] || user?.email[0].toUpperCase()}
+                    {profile?.employee?.firstName?.[0] || user?.email?.[0]?.toUpperCase() || ''}
                     {profile?.employee?.lastName?.[0] || ''}
                   </span>
                 </div>
@@ -146,7 +154,7 @@ const Profile = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-500">Email</label>
-                  <p className="mt-1 text-sm text-gray-900">{profile.employee.email}</p>
+                  <p className="mt-1 text-sm text-gray-900">{profile.employee.email || profile.email || 'N/A'}</p>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-500">Phone</label>
@@ -156,7 +164,7 @@ const Profile = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-500">Date of Birth</label>
                     <p className="mt-1 text-sm text-gray-900">
-                      {format(new Date(profile.employee.dateOfBirth), 'MMM dd, yyyy')}
+                      {formatDate(profile.employee.dateOfBirth)}
                     </p>
                   </div>
                 )}
@@ -198,7 +206,7 @@ const Profile = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-500">Hire Date</label>
                   <p className="mt-1 text-sm text-gray-900">
-                    {format(new Date(profile.employee.hireDate), 'MMM dd, yyyy')}
+                    {formatDate(profile.employee.hireDate)}
                   </p>
                 </div>
                 <div>
@@ -212,7 +220,7 @@ const Profile = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-500">Employment Status</label>
-                  <p className="mt-1 text-sm text-gray-900">{profile.employee.employmentStatus}</p>
+                  <p className="mt-1 text-sm text-gray-900">{profile.employee.employmentStatus || 'N/A'}</p>
                 </div>
               </div>
             </div>
@@ -241,16 +249,13 @@ const Profile = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-500">Last Login</label>
                 <p className="mt-1 text-sm text-gray-900">
-                  {profile?.lastLoginAt ? 
-                    format(new Date(profile.lastLoginAt), 'MMM dd, yyyy HH:mm') : 
-                    'Never'
-                  }
+                  {formatDate(profile?.lastLoginAt, 'MMM dd, yyyy HH:mm', 'Never')}
                 </p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-500">Account Created</label>
                 <p className="mt-1 text-sm text-gray-900">
-                  {format(new Date(profile?.createdAt), 'MMM dd, yyyy')}
+                  {formatDate(profile?.createdAt)}
                 </p>
               </div>
             </div>

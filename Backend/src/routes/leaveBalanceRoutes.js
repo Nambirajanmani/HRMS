@@ -41,17 +41,11 @@ const createBalanceSchema = z.object({
     employeeId: z.string().uuid('Invalid employee ID'),
     policyId: z.string().uuid('Invalid policy ID'),
     year: z.number().min(2000, 'Year must be 2000 or later').max(2030, 'Year cannot be beyond 2030'),
-    allocatedDays: z.number().min(0, 'Allocated days must be non-negative').max(999, 'Allocated days cannot exceed 999'),
-    carryForwardDays: z.number().min(0, 'Carry forward days must be non-negative').max(999, 'Carry forward days cannot exceed 999').default(0),
-    adjustmentDays: z.number().min(-999, 'Adjustment days too low').max(999, 'Adjustment days too high').default(0),
-    adjustmentReason: z.string().max(500, 'Adjustment reason too long').optional(),
+    allocated: z.number().min(0, 'Allocated days must be non-negative').max(999, 'Allocated days cannot exceed 999'),
+    carryForward: z.number().min(0, 'Carry forward days must be non-negative').max(999, 'Carry forward days cannot exceed 999').default(0),
   }).refine(data => {
     // Ensure carry forward days don't exceed allocated days
-    if (data.carryForwardDays > data.allocatedDays) {
-      return false;
-    }
-    // If adjustment reason is provided, adjustment days should be non-zero
-    if (data.adjustmentReason && data.adjustmentDays === 0) {
+    if (data.carryForward > data.allocated) {
       return false;
     }
     return true;
@@ -62,19 +56,9 @@ const createBalanceSchema = z.object({
 
 const updateBalanceSchema = z.object({
   body: z.object({
-    allocatedDays: z.number().min(0, 'Allocated days must be non-negative').max(999, 'Allocated days cannot exceed 999').optional(),
-    usedDays: z.number().min(0, 'Used days must be non-negative').max(999, 'Used days cannot exceed 999').optional(),
-    carryForwardDays: z.number().min(0, 'Carry forward days must be non-negative').max(999, 'Carry forward days cannot exceed 999').optional(),
-    adjustmentDays: z.number().min(-999, 'Adjustment days too low').max(999, 'Adjustment days too high').optional(),
-    adjustmentReason: z.string().max(500, 'Adjustment reason too long').optional(),
-  }).refine(data => {
-    // If adjustment is being made, require reason
-    if (data.adjustmentDays !== undefined && data.adjustmentDays !== 0 && !data.adjustmentReason) {
-      return false;
-    }
-    return true;
-  }, {
-    message: 'Adjustment reason is required when making adjustments',
+    allocated: z.number().min(0, 'Allocated days must be non-negative').max(999, 'Allocated days cannot exceed 999').optional(),
+    used: z.number().min(0, 'Used days must be non-negative').max(999, 'Used days cannot exceed 999').optional(),
+    carryForward: z.number().min(0, 'Carry forward days must be non-negative').max(999, 'Carry forward days cannot exceed 999').optional(),
   }),
 });
 
@@ -95,8 +79,8 @@ const bulkCreateSchema = z.object({
     balances: z.array(z.object({
       employeeId: z.string().uuid('Invalid employee ID'),
       policyId: z.string().uuid('Invalid policy ID'),
-      allocatedDays: z.number().min(0, 'Allocated days must be non-negative').max(999, 'Allocated days cannot exceed 999'),
-      carryForwardDays: z.number().min(0, 'Carry forward days must be non-negative').max(999, 'Carry forward days cannot exceed 999').default(0),
+      allocated: z.number().min(0, 'Allocated days must be non-negative').max(999, 'Allocated days cannot exceed 999'),
+      carryForward: z.number().min(0, 'Carry forward days must be non-negative').max(999, 'Carry forward days cannot exceed 999').default(0),
     })).min(1, 'At least one balance is required').max(1000, 'Cannot process more than 1000 balances at once'),
     year: z.number().min(2000, 'Year must be 2000 or later').max(2030, 'Year cannot be beyond 2030'),
     overwriteExisting: z.boolean().default(false),
@@ -477,7 +461,7 @@ router.post(
       }
 
       // Calculate remaining days
-      const totalDays = balanceData.allocatedDays + balanceData.carryForwardDays + balanceData.adjustmentDays;
+      const totalDays = balanceData.allocated + balanceData.carryForward;
       const remainingDays = totalDays;
 
       // Create the leave balance
@@ -486,12 +470,10 @@ router.post(
           employeeId: balanceData.employeeId,
           policyId: balanceData.policyId,
           year: balanceData.year,
-          allocatedDays: balanceData.allocatedDays,
-          carryForwardDays: balanceData.carryForwardDays,
-          adjustmentDays: balanceData.adjustmentDays,
-          adjustmentReason: balanceData.adjustmentReason,
-          usedDays: 0,
-          remainingDays: remainingDays,
+          allocated: balanceData.allocated,
+          carryForward: balanceData.carryForward,
+          used: 0,
+          remaining: remainingDays,
           createdById: req.user.id,
         },
         include: {
@@ -1275,6 +1257,76 @@ router.post(
         error: error.message, 
         id: req.params.id,
         userId: req.user?.id 
+      });
+      next(error);
+    }
+  }
+);
+
+/**
+ * GET /api/leave-balances/my - Get current user's leave balances
+ */
+router.get(
+  '/my',
+  authenticate,
+  authorize('ADMIN', 'HR', 'MANAGER', 'EMPLOYEE'),
+  async (req, res, next) => {
+    try {
+      if (!req.user.employee) {
+        throw new AppError('Employee record not found for user', 404, null, 'EMPLOYEE_NOT_FOUND');
+      }
+
+      const employeeId = req.user.employee.id;
+      const { year } = req.query;
+
+      // Build filters
+      const filters = { employeeId };
+      if (year) {
+        const yearNum = parseInt(year, 10);
+        if (isNaN(yearNum) || !isValidYear(yearNum)) {
+          return res.status(400).json({
+            status: 'error',
+            message: 'Invalid year. Must be between 2000 and 2030',
+            code: 'INVALID_YEAR'
+          });
+        }
+        filters.year = yearNum;
+      }
+
+      // Execute queries
+      const balances = await prisma.leaveBalance.findMany({
+        where: filters,
+        orderBy: [
+          { year: 'desc' },
+          { policy: { leaveType: 'asc' } }
+        ],
+        include: {
+          policy: {
+            select: {
+              id: true,
+              name: true,
+              leaveType: true,
+              maxDaysPerYear: true,
+              carryForwardAllowed: true,
+              maxCarryForwardDays: true
+            },
+          },
+        },
+      });
+
+      await createAuditLog(req.user.id, 'READ', 'leave_balances', null, null, null, req);
+
+      res.json({
+        status: 'success',
+        data: {
+          balances,
+          total: balances.length
+        },
+      });
+    } catch (error) {
+      logger.error('Error fetching my leave balances', {
+        error: error.message,
+        userId: req.user?.id
       });
       next(error);
     }

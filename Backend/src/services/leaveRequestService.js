@@ -1,8 +1,6 @@
 
-import { PrismaClient } from '@prisma/client';
+import prisma from '../config/prisma.js';
 import { AppError, NotFoundError } from '../utils/errors.js';
-
-const prisma = new PrismaClient();
 
 const leaveRequestService = {
   async getAllLeaveRequests({ page, limit, status, employeeId, user }) {
@@ -310,6 +308,25 @@ const leaveRequestService = {
 
     await createAuditLog(req.user.id, 'UPDATE', 'leave_requests', id, existing, leaveRequest, req);
     
+    // Send notification to employee user if available
+    try {
+      const employeeUserId = existing.employee?.userId;
+      if (employeeUserId) {
+        const statusMsg = leaveRequest.status === 'APPROVED' ? 'approved' : (leaveRequest.status === 'REJECTED' ? 'rejected' : leaveRequest.status.toLowerCase());
+        const message = `Your leave request (${leaveRequest.id}) has been ${statusMsg}.`;
+        await prisma.notification.create({
+          data: {
+            userId: employeeUserId,
+            message,
+            meta: { leaveRequestId: leaveRequest.id, status: leaveRequest.status }
+          }
+        });
+      }
+    } catch (err) {
+      // Log but don't fail the request
+      console.error('Failed to create notification', err?.message || err);
+    }
+
     return leaveRequest;
   },
 

@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "d:\\HRMS\\Backend\\logs\\.d60551e967ee726ca374988d41023217e6a4c9c1-audit.json",
+    "files": [
+        {
+            "date": 1764658357019,
+            "name": "d:\\HRMS\\Backend\\logs\\combined-2025-12-02.log",
+            "hash": "aa0cde728ed41af6029ca9fa38630746d106a24718ab1a10586b760e610377ca"
+        },
+        {
+            "date": 1764840929097,
+            "name": "d:\\HRMS\\Backend\\logs\\combined-2025-12-04.log",
+            "hash": "2e0f9268e0d54339df502796b396c7b355b3ec896924fde8100575199f62e383"
+        },
+        {
+            "date": 1765345738642,
+            "name": "d:\\HRMS\\Backend\\logs\\combined-2025-12-10.log",
+            "hash": "ea0b1e6ef62112f15ec3e213c2e7419e50d520360b64c789f5ca1f3d6d80e73b"
+        },
+        {
+            "date": 1765776225423,
+            "name": "d:\\HRMS\\Backend\\logs\\combined-2025-12-15.log",
+            "hash": "6795bd90c5668d1a4b8d92bb4ce908e5f1d37601187836e7040be2a2d42ec911"
+        }
+    ],
+    "hashType": "sha256"
+}

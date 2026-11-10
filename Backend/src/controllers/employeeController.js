@@ -10,17 +10,21 @@ const createEmployee = async (req, res, next) => {
       createdById: req.user?.id,
     };
     
-    const employee = await employeeService.createEmployee(employeeData, req);
+    const result = await employeeService.createEmployee(employeeData, req);
+    const employee = result.employee || result;
     
     logger.info('Employee created successfully', {
       employeeId: employee.id,
       createdBy: req.user?.id
     });
     
+    const responsePayload = { employee };
+    if (result.credentials) responsePayload.credentials = result.credentials;
+
     res.status(201).json({ 
       success: true,
       message: 'Employee created successfully', 
-      data: { employee }
+      data: responsePayload
     });
   } catch (error) {
     logger.error('Failed to create employee', {

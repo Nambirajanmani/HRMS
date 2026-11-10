@@ -20,8 +20,9 @@ const ProtectedRoute = ({ children, requiredRoles = [] }) => {
   }
 
   if (requiredRoles.length > 0 && !hasPermission(requiredRoles)) {
-    // Redirect to unauthorized page or dashboard
-    return <Navigate to="/dashboard" replace />
+    // Redirect to the dashboard that matches the user's role (avoids redirect loops)
+    const home = (user.role || '').toLowerCase() === 'employee' ? '/user/dashboard' : '/dashboard'
+    return <Navigate to={home} replace />
   }
 
   return children

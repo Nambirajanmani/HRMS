@@ -60,7 +60,8 @@ const employeeSchema = z.object({
       .email('Invalid email format')
       .trim(),
     hireDate: z.string()
-      .min(1, 'Hire date is required'),
+      .min(1, 'Hire date is required')
+      .regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format (yyyy-MM-dd)'),
     employmentType: z.enum(['FULL_TIME', 'PART_TIME', 'CONTRACT', 'INTERN', 'CONSULTANT'])
       .default('FULL_TIME'),
     employmentStatus: z.enum(['ACTIVE', 'INACTIVE', 'TERMINATED', 'ON_LEAVE', 'PROBATION'])
@@ -568,51 +569,14 @@ router.post(
         }
       }
 
-      // Prepare data for database insertion
-      const dbData = {
-        employeeId: employeeData.employeeId,
-        firstName: employeeData.firstName,
-        lastName: employeeData.lastName,
-        email: employeeData.email,
-        employmentType: employeeData.employmentType,
-        employmentStatus: employeeData.employmentStatus,
-        hireDate: new Date(employeeData.hireDate),
-        createdById: req.user.id,
-      };
-
-      // Add optional fields only if they exist
-      if (employeeData.middleName) dbData.middleName = employeeData.middleName;
-      if (employeeData.phone) dbData.phone = employeeData.phone;
-      if (employeeData.dateOfBirth) dbData.dateOfBirth = new Date(employeeData.dateOfBirth);
-      if (employeeData.gender) dbData.gender = employeeData.gender;
-      if (employeeData.maritalStatus) dbData.maritalStatus = employeeData.maritalStatus;
-      if (employeeData.nationality) dbData.nationality = employeeData.nationality;
-      if (employeeData.address) dbData.address = employeeData.address;
-      if (employeeData.city) dbData.city = employeeData.city;
-      if (employeeData.state) dbData.state = employeeData.state;
-      if (employeeData.country) dbData.country = employeeData.country;
-      if (employeeData.zipCode) dbData.zipCode = employeeData.zipCode;
-      if (employeeData.emergencyContactName) dbData.emergencyContactName = employeeData.emergencyContactName;
-      if (employeeData.emergencyContactPhone) dbData.emergencyContactPhone = employeeData.emergencyContactPhone;
-      if (employeeData.emergencyContactRelation) dbData.emergencyContactRelation = employeeData.emergencyContactRelation;
-      if (employeeData.departmentId) dbData.departmentId = employeeData.departmentId;
-      if (employeeData.positionId) dbData.positionId = employeeData.positionId;
-      if (employeeData.managerId) dbData.managerId = employeeData.managerId;
-      if (employeeData.baseSalary !== undefined) dbData.baseSalary = employeeData.baseSalary;
-
-      console.log('Data for database:', dbData);
-
-      const newEmployee = await prisma.employee.create({
-        data: dbData,
-        include: {
-          department: { select: { id: true, name: true } },
-          position: { select: { id: true, title: true, level: true } },
-          manager: { select: { id: true, firstName: true, lastName: true } },
-        },
-      });
-
-      await createAuditLog(req.user.id, 'CREATE', 'employees', newEmployee.id, null, newEmployee, req);
-      res.status(201).json({ status: 'success', data: newEmployee });
+      // Delegate creation to employeeService which will also create a linked User account
+      const result = await import('../services/employeeService.js').then(m => m.employeeService.createEmployee(employeeData, req));
+      // result may contain { employee, credentials }
+      const employeePayload = result.employee || result;
+      await createAuditLog(req.user.id, 'CREATE', 'employees', employeePayload.id, null, employeePayload, req);
+      const response = { status: 'success', data: { employee: employeePayload } };
+      if (result.credentials) response.data.credentials = result.credentials;
+      res.status(201).json(response);
     } catch (error) {
       console.error('Detailed error creating employee:', {
         message: error.message,

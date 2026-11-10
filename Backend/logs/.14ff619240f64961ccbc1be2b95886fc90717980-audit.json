@@ -1,0 +1,45 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\HRMS\\Backend\\logs\\.14ff619240f64961ccbc1be2b95886fc90717980-audit.json",
+    "files": [
+        {
+            "date": 1764825564622,
+            "name": "D:\\HRMS\\Backend\\logs\\exceptions-2025-12-04.log",
+            "hash": "fa258c2fc2391d5993a508f525cd291003a6e9877447654f1eb40f506ad3eb02"
+        },
+        {
+            "date": 1764911748702,
+            "name": "D:\\HRMS\\Backend\\logs\\exceptions-2025-12-05.log",
+            "hash": "7fa47fc60caa0048e6919142ba80b433de91db334b0aff8c99215817aca06f95"
+        },
+        {
+            "date": 1765345276320,
+            "name": "D:\\HRMS\\Backend\\logs\\exceptions-2025-12-10.log",
+            "hash": "f2d32edbf19c52a38d7b388c014843a175ecf58f54a5778992eab02311cf9896"
+        },
+        {
+            "date": 1765517564318,
+            "name": "D:\\HRMS\\Backend\\logs\\exceptions-2025-12-12.log",
+            "hash": "d5921ce83f07fa7e7f46f5445a38f42c25bbcf7ae25b5e1b8a0a2ab9d8683b65"
+        },
+        {
+            "date": 1765774639523,
+            "name": "D:\\HRMS\\Backend\\logs\\exceptions-2025-12-15.log",
+            "hash": "0d5b4bdf3d1180c893d497de84bf67c689007456d4c34c42b4c0a0b8d6c923a2"
+        },
+        {
+            "date": 1765862263039,
+            "name": "D:\\HRMS\\Backend\\logs\\exceptions-2025-12-16.log",
+            "hash": "223ea94a057eec78fc50c146f8cd20c44a25fab3538f40acc46bcf2dda5af241"
+        },
+        {
+            "date": 1765946677643,
+            "name": "D:\\HRMS\\Backend\\logs\\exceptions-2025-12-17.log",
+            "hash": "d94b349fa89737b37ac75ab92bcf9affda083e523a290f4f2bbfde6f36f931cd"
+        }
+    ],
+    "hashType": "sha256"
+}

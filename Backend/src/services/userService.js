@@ -1,10 +1,8 @@
 
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../config/prisma.js';
 import { AppError, NotFoundError } from '../utils/errors.js';
-
-const prisma = new PrismaClient();
 
 const userService = {
   async getAllUsers({ page, limit, search, role, isActive }) {

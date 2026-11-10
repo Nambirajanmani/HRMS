@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import prisma from '../prisma/client.js';
+import prisma from '../config/prisma.js';
 import { NotFoundError, UnauthorizedError, ValidationError } from '../utils/errors.js';
 
 // Validation schemas
@@ -226,15 +226,24 @@ export const createDepartment = async ({ data, userRole }) => {
   const { name, managerId, parentId, description, isActive } = validatedData;
 
   try {
-    // Check if department name already exists
+    // Check if department name already exists (case insensitive)
     const existingDepartment = await prisma.department.findFirst({
       where: {
-        name: {
-          equals: name,
-          mode: 'insensitive'
-        }
+        name: name.toLowerCase()
       }
     });
+
+    // For SQLite compatibility, also check lowercase
+    if (!existingDepartment) {
+      const lowerCaseExisting = await prisma.department.findFirst({
+        where: {
+          name: name.toLowerCase()
+        }
+      });
+      if (lowerCaseExisting && lowerCaseExisting.name.toLowerCase() === name.toLowerCase()) {
+        throw new ValidationError('Department name already exists');
+      }
+    }
 
     if (existingDepartment) {
       throw new ValidationError('Department name already exists');
@@ -293,7 +302,7 @@ export const createDepartment = async ({ data, userRole }) => {
   } catch (error) {
     if (error instanceof ValidationError) throw error;
     console.error('Database error in createDepartment:', error);
-    throw new Error('Failed to create department');
+    throw error;
   }
 };
 
@@ -319,14 +328,11 @@ export const updateDepartment = async ({ id, data, userRole }) => {
     if (name && name !== existingDepartment.name) {
       const nameConflict = await prisma.department.findFirst({
         where: {
-          name: {
-            equals: name,
-            mode: 'insensitive'
-          },
+          name: name.toLowerCase(),
           NOT: { id }
         }
       });
-      if (nameConflict) {
+      if (nameConflict && nameConflict.name.toLowerCase() === name.toLowerCase()) {
         throw new ValidationError('Department name already exists');
       }
     }
@@ -535,6 +541,82 @@ export const getDepartmentHierarchy = async ({ id, userRole }) => {
     if (error instanceof NotFoundError) throw error;
     console.error('Database error in getDepartmentHierarchy:', error);
     throw new Error('Failed to fetch department hierarchy');
+  }
+};
+
+// Toggle department status (activate/deactivate)
+export const toggleDepartmentStatus = async ({ id, userRole }) => {
+  if (!id) throw new ValidationError('Department ID is required');
+
+  checkAuthorization(userRole, ['ADMIN', 'HR']);
+
+  try {
+    const existingDepartment = await prisma.department.findUnique({
+      where: { id },
+      include: {
+        employees: { where: { employmentStatus: 'ACTIVE' } },
+        children: { where: { isActive: true } },
+        positions: { where: { isActive: true } },
+      },
+    });
+
+    if (!existingDepartment) {
+      throw new NotFoundError('Department not found');
+    }
+
+    // If currently active, check for dependencies before deactivating
+    if (existingDepartment.isActive) {
+      // Check for dependencies
+      if (existingDepartment.employees.length > 0) {
+        throw new ValidationError(
+          `Cannot deactivate department with ${existingDepartment.employees.length} active employee(s). Please reassign employees first.`
+        );
+      }
+
+      if (existingDepartment.children.length > 0) {
+        throw new ValidationError(
+          `Cannot deactivate department with ${existingDepartment.children.length} active child department(s). Please deactivate child departments first.`
+        );
+      }
+
+      if (existingDepartment.positions.length > 0) {
+        throw new ValidationError(
+          `Cannot deactivate department with ${existingDepartment.positions.length} active position(s). Please deactivate positions first.`
+        );
+      }
+    }
+
+    const newStatus = !existingDepartment.isActive;
+
+    const department = await prisma.department.update({
+      where: { id },
+      data: {
+        isActive: newStatus,
+        // Clear manager when deactivating to avoid referential issues
+        managerId: newStatus ? existingDepartment.managerId : null
+      },
+      include: {
+        manager: {
+          select: {
+            id: true,
+            employeeId: true,
+            firstName: true,
+            lastName: true,
+            email: true,
+            position: { select: { title: true } }
+          }
+        },
+        parent: { select: { id: true, name: true } },
+      },
+    });
+
+    return department;
+  } catch (error) {
+    if (error instanceof NotFoundError || error instanceof ValidationError) {
+      throw error;
+    }
+    console.error('Database error in toggleDepartmentStatus:', error);
+    throw new Error('Failed to toggle department status');
   }
 };
 

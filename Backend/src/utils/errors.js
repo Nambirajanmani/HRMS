@@ -61,4 +61,5 @@ export {
   AuthenticationError,
   AuthorizationError,
   NotFoundError,
+  AuthorizationError as UnauthorizedError,
 };

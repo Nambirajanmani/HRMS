@@ -890,6 +890,30 @@ router.post(
         req
       );
 
+      // Create notification for the employee's user account
+      try {
+        const employeeRecord = await prisma.employee.findUnique({
+          where: { id: existingRequest.employeeId },
+          select: { userId: true }
+        });
+
+        if (employeeRecord?.userId) {
+          const message = action === 'APPROVE'
+            ? `Your leave request (${result.id}) has been approved. OK.`
+            : `Your leave request (${result.id}) has been rejected. ${rejectionReason || ''}`;
+
+          await prisma.notification.create({
+            data: {
+              userId: employeeRecord.userId,
+              message,
+              meta: { leaveRequestId: result.id, status: result.status }
+            }
+          });
+        }
+      } catch (notifErr) {
+        logger.warn('Failed to create notification for leave request update', { error: notifErr?.message || notifErr });
+      }
+
       res.json({ 
         status: 'success', 
         message: `Leave request ${action.toLowerCase()}d successfully`,
@@ -1029,6 +1053,99 @@ router.delete(
       logger.error('Error cancelling leave request', {
         error: error.message,
         id: req.params.id,
+        userId: req.user?.id,
+      });
+      next(error);
+    }
+  }
+);
+
+/**
+ * GET /api/leave-requests/my-history - Get current user's leave request history
+ */
+router.get(
+  '/my-history',
+  authenticate,
+  authorize('ADMIN', 'HR', 'MANAGER', 'EMPLOYEE'),
+  async (req, res, next) => {
+    try {
+      if (!req.user.employee || !req.user.employee.id) {
+        throw new AppError('Employee record not found for user', 404, null, 'EMPLOYEE_NOT_FOUND');
+      }
+
+      const employeeId = req.user.employee.id;
+
+      // Process pagination
+      const rawQuery = req.query || {};
+      const page = safeParseInt(rawQuery.page, 1, 1, 1000);
+      const limit = safeParseInt(rawQuery.limit, 10, 1, 100);
+
+      // Process status filter
+      const validStatuses = ['PENDING', 'APPROVED', 'REJECTED', 'CANCELLED'];
+      let status = null;
+      if (!isEmpty(rawQuery.status)) {
+        const stat = rawQuery.status.trim().toUpperCase();
+        if (!validStatuses.includes(stat)) {
+          return res.status(400).json({
+            status: 'error',
+            message: 'Invalid status',
+            code: 'INVALID_STATUS',
+            validValues: validStatuses
+          });
+        }
+        status = stat;
+      }
+
+      // Build filters
+      const filters = { employeeId };
+      if (status) {
+        filters.status = status;
+      }
+
+      // Execute queries
+      const [leaveRequests, total] = await Promise.all([
+        prisma.leaveRequest.findMany({
+          where: filters,
+          skip: (page - 1) * limit,
+          take: limit,
+          orderBy: { createdAt: 'desc' },
+          include: {
+            policy: {
+              select: {
+                id: true,
+                name: true,
+                leaveType: true
+              },
+            },
+            approvedBy: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true
+              },
+            },
+          },
+        }),
+        prisma.leaveRequest.count({ where: filters }),
+      ]);
+
+      await createAuditLog(req.user.id, 'READ', 'leave_requests', null, null, null, req);
+
+      res.json({
+        status: 'success',
+        data: {
+          requests: leaveRequests,
+          pagination: {
+            total,
+            page: Number(page),
+            limit: Number(limit),
+            pages: Math.ceil(total / limit)
+          }
+        },
+      });
+    } catch (error) {
+      logger.error('Error fetching my leave history', {
+        error: error.message,
         userId: req.user?.id,
       });
       next(error);
@@ -1554,6 +1671,22 @@ router.post(
             result,
             req
           );
+
+            // Notify the employee that their leave was approved
+            try {
+              const emp = await prisma.employee.findUnique({ where: { id: existingRequest.employeeId }, select: { userId: true } });
+              if (emp?.userId) {
+                await prisma.notification.create({
+                  data: {
+                    userId: emp.userId,
+                    message: `Your leave request (${result.id}) has been approved. OK.`,
+                    meta: { leaveRequestId: result.id, status: result.status }
+                  }
+                });
+              }
+            } catch (notifErr) {
+              logger.warn('Failed to create notification for bulk approved leave', { error: notifErr?.message || notifErr });
+            }
         } catch (error) {
           errors.push({
             requestId,

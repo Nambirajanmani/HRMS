@@ -1,10 +1,8 @@
 // src/middleware/auth.js
-import { PrismaClient } from '@prisma/client';
 import { AuthenticationError, AuthorizationError, ValidationError } from '../utils/errors.js';
 import { verifyAccessToken } from '../utils/authUtils.js';
 import logger from '../utils/logger.js';
-
-const prisma = new PrismaClient({ errorFormat: 'pretty' });
+import prisma from '../config/prisma.js';
 
 // Helper for environment variables
 const getEnvVariable = (key, defaultValue) => {
@@ -21,7 +19,13 @@ const authenticate = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      throw new AuthenticationError('Access token required', null, 'TOKEN_REQUIRED');
+      const authError = new AuthenticationError('Access token required', null, 'TOKEN_REQUIRED');
+      logger.error('Authentication error', { error: authError.message, url: req.originalUrl });
+      return res.status(authError.statusCode).json({
+        status: authError.status,
+        message: authError.message,
+        code: authError.code
+      });
     }
 
     const token = authHeader.split(' ')[1];
@@ -47,7 +51,13 @@ const authenticate = async (req, res, next) => {
     });
 
     if (!user || !user.isActive) {
-      throw new AuthenticationError('User not found or inactive', null, 'USER_NOT_FOUND');
+      const authError = new AuthenticationError('User not found or inactive', null, 'USER_NOT_FOUND');
+      logger.error('Authentication error', { error: authError.message, url: req.originalUrl });
+      return res.status(authError.statusCode).json({
+        status: authError.status,
+        message: authError.message,
+        code: authError.code
+      });
     }
 
     // Use the role from database, not from token
@@ -56,7 +66,14 @@ const authenticate = async (req, res, next) => {
     next();
   } catch (error) {
     logger.error('Authentication error', { error: error.message, url: req.originalUrl });
-    next(error);
+    const statusCode = error.statusCode || 401;
+    const message = error.message || 'Authentication failed';
+    const code = error.code || 'AUTH_ERROR';
+    res.status(statusCode).json({
+      status: 'fail',
+      message: message,
+      code: code
+    });
   }
 };
 

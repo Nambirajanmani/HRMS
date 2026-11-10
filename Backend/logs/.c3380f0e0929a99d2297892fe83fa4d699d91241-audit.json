@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "d:\\HRMS\\Backend\\logs\\.c3380f0e0929a99d2297892fe83fa4d699d91241-audit.json",
+    "files": [
+        {
+            "date": 1764658357021,
+            "name": "d:\\HRMS\\Backend\\logs\\exceptions-2025-12-02.log",
+            "hash": "51beb18c0a95d5cb797537d4d3271e9927ccae83ae1173e98ddec0786ed1fd08"
+        },
+        {
+            "date": 1764840929115,
+            "name": "d:\\HRMS\\Backend\\logs\\exceptions-2025-12-04.log",
+            "hash": "6ea731096f64de10281259c338465a0b85208e0bbf99755be432dc128e258aac"
+        },
+        {
+            "date": 1765345738643,
+            "name": "d:\\HRMS\\Backend\\logs\\exceptions-2025-12-10.log",
+            "hash": "a0422ec62019e2c47fd0de0a848a1c53db0a981a47a34e0a88135ea3e8835deb"
+        },
+        {
+            "date": 1765776225425,
+            "name": "d:\\HRMS\\Backend\\logs\\exceptions-2025-12-15.log",
+            "hash": "7a59011b6c0a2baa97b52d4206b3f287fa6ae03e590b99a6a9447605a4fb5c62"
+        }
+    ],
+    "hashType": "sha256"
+}

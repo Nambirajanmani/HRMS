@@ -1,109 +1,85 @@
 import winston from 'winston';
-import DailyRotateFile from 'winston-daily-rotate-file';
-import { promises as fs } from 'fs';
 import path from 'path';
-import crypto from 'crypto';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const LOGS_DIR = path.join(__dirname, '..', '..', 'logs');
+import fs from 'fs';
 
 // Ensure logs directory exists
-const ensureLogsDirectory = async () => {
-  try {
-    await fs.mkdir(LOGS_DIR, { recursive: true });
-  } catch (error) {
-    console.error('Failed to create logs directory:', error.message);
-  }
+const logsDir = path.join(process.cwd(), 'logs');
+if (!fs.existsSync(logsDir)) {
+  fs.mkdirSync(logsDir, { recursive: true });
+}
+
+// Define log levels
+const levels = {
+  error: 0,
+  warn: 1,
+  info: 2,
+  debug: 3,
 };
 
-// Validate environment variables
-const getEnvVariable = (key, defaultValue) => {
-  const value = process.env[key];
-  if (!value) {
-    console.warn(`Environment variable ${key} not set, using default: ${defaultValue}`);
-    return defaultValue;
-  }
-  return value;
+// Define colors for each level
+const colors = {
+  error: 'red',
+  warn: 'yellow',
+  info: 'green',
+  debug: 'blue',
 };
 
-// Custom format to include request metadata
-const requestMetaFormat = winston.format((info, opts) => {
-  if (opts.requestContext) {
-    info.requestId = opts.requestContext.requestId;
-    info.userId = opts.requestContext.userId;
-  }
-  return info;
-});
+// Add colors to winston
+winston.addColors(colors);
 
+// Create the logger
 const logger = winston.createLogger({
-  level: getEnvVariable('LOG_LEVEL', 'info'),
+  level: process.env.LOG_LEVEL || 'info',
+  levels,
   format: winston.format.combine(
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     winston.format.errors({ stack: true }),
-    requestMetaFormat(),
     winston.format.json()
   ),
   defaultMeta: { service: 'hrms-backend' },
   transports: [
-    new DailyRotateFile({
-      filename: path.join(LOGS_DIR, 'error-%DATE%.log'),
+    // Write all logs with importance level of `error` or less to `error.log`
+    new winston.transports.File({
+      filename: path.join(logsDir, 'error.log'),
       level: 'error',
-      datePattern: 'YYYY-MM-DD',
-      maxFiles: '14d',
-      maxSize: '20m',
-      zippedArchive: true,
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.errors({ stack: true }),
+        winston.format.json()
+      ),
     }),
-    new DailyRotateFile({
-      filename: path.join(LOGS_DIR, 'combined-%DATE%.log'),
-      datePattern: 'YYYY-MM-DD',
-      maxFiles: '14d',
-      maxSize: '20m',
-      zippedArchive: true,
-    }),
-  ],
-  exceptionHandlers: [
-    new DailyRotateFile({
-      filename: path.join(LOGS_DIR, 'exceptions-%DATE%.log'),
-      datePattern: 'YYYY-MM-DD',
-      maxFiles: '14d',
-      maxSize: '20m',
-      zippedArchive: true,
+    // Write all logs with importance level of `info` or less to `combined.log`
+    new winston.transports.File({
+      filename: path.join(logsDir, 'combined.log'),
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.errors({ stack: true }),
+        winston.format.json()
+      ),
     }),
   ],
 });
 
-// Add console transport for non-production environments
-if (getEnvVariable('NODE_ENV', 'development') !== 'production') {
-  logger.add(
-    new winston.transports.Console({
-      format: winston.format.combine(
-        winston.format.colorize(),
-        winston.format.simple(),
-        winston.format.printf(
-          ({ level, message, timestamp, service, requestId, userId }) =>
-            `${timestamp} [${service}] ${level}: ${message} ${
-              requestId ? `(RequestID: ${requestId}, UserID: ${userId || 'N/A'})` : ''
-            }`
-        )
-      ),
-    })
-  );
+// If we're not in production then log to the `console` with a simple format
+if (process.env.NODE_ENV !== 'production') {
+  logger.add(new winston.transports.Console({
+    format: winston.format.combine(
+      winston.format.colorize({ all: true }),
+      winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+      winston.format.printf(({ timestamp, level, message, service, ...meta }) => {
+        let metaStr = Object.keys(meta).length ? JSON.stringify(meta, null, 2) : '';
+        return `${timestamp} [${service}] ${level}: ${message} ${metaStr}`;
+      })
+    ),
+  }));
 }
 
-// Initialize logs directory
-ensureLogsDirectory();
-
-// Export a middleware to add request context
-export const requestLogger = (req, res, next) => {
-  const requestId = crypto.randomUUID();
-  req.logger = logger.child({
-    requestContext: { requestId, userId: req.user?.id || null },
-  });
-  req.logger.info(`Incoming request: ${req.method} ${req.url}`);
-  next();
+// Create a stream for morgan (HTTP request logging)
+const requestLogger = {
+  write: (message) => {
+    logger.info(message.trim());
+  },
 };
 
 export default logger;
+export { requestLogger };

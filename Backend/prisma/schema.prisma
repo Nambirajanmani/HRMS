@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -21,7 +21,10 @@ model User {
   auditLogs            AuditLog[]
   createdEmployees     Employee[]     @relation("CreatedByUser")
   updatedEmployees     Employee[]     @relation("UpdatedByUser")
+  createdDepartments   Department[]   @relation("CreatedByUser")
+  updatedDepartments   Department[]   @relation("UpdatedByUser")
   employee             Employee?
+  notifications        Notification[]
   refreshTokens        RefreshToken[]
 
   @@map("users")
@@ -68,7 +71,7 @@ model Employee {
   probationEndDate         DateTime?
   terminationDate          DateTime?
   terminationReason        String?
-  baseSalary               Decimal?             @db.Decimal(10, 2)
+  baseSalary               Float?
   currency                 String?              @default("USD")
   bankAccountNumber        String?
   bankName                 String?
@@ -76,8 +79,8 @@ model Employee {
   taxId                    String?
   profilePicture           String?
   bio                      String?
-  skills                   String[]
-  qualifications           String[]
+  skills                   Json                 @default("[]")
+  qualifications           Json                 @default("[]")
   createdAt                DateTime             @default(now())
   updatedAt                DateTime             @updatedAt
   createdById              String?
@@ -106,6 +109,7 @@ model Employee {
   performanceReviews       PerformanceReview[]  @relation("EmployeeReviews")
   reviewsGiven             PerformanceReview[]  @relation("ReviewerReviews")
   trainingRecords          TrainingRecord[]
+  timeEntries              TimeEntry[]
 
   @@map("employees")
 }
@@ -119,6 +123,10 @@ model Department {
   isActive    Boolean      @default(true)
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+  createdById String?
+  updatedById String?
+  createdBy   User?        @relation("CreatedByUser", fields: [createdById], references: [id])
+  updatedBy   User?        @relation("UpdatedByUser", fields: [updatedById], references: [id])
   manager     Employee?    @relation("DepartmentManager", fields: [managerId], references: [id])
   parent      Department?  @relation("DepartmentHierarchy", fields: [parentId], references: [id])
   children    Department[] @relation("DepartmentHierarchy")
@@ -135,10 +143,10 @@ model Position {
   description      String?
   departmentId     String?
   level            String?
-  minSalary        Decimal?     @db.Decimal(10, 2)
-  maxSalary        Decimal?     @db.Decimal(10, 2)
-  requirements     String[]
-  responsibilities String[]
+  minSalary        Float?
+  maxSalary        Float?
+  requirements     Json        @default("[]")
+  responsibilities Json        @default("[]")
   isActive         Boolean      @default(true)
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
@@ -152,14 +160,14 @@ model Position {
 model Attendance {
   id            String           @id @default(uuid())
   employeeId    String
-  date          DateTime         @db.Date
+  date          DateTime
   checkIn       DateTime?
   checkOut      DateTime?
   breakStart    DateTime?
   breakEnd      DateTime?
   status        AttendanceStatus @default(PRESENT)
-  hoursWorked   Decimal?         @db.Decimal(4, 2)
-  overtimeHours Decimal?         @db.Decimal(4, 2)
+  hoursWorked   Float?
+  overtimeHours Float?
   notes         String?
   location      String?
   ipAddress     String?
@@ -209,8 +217,8 @@ model LeaveRequest {
   id                 String      @id @default(uuid())
   employeeId         String
   policyId           String
-  startDate          DateTime    @db.Date
-  endDate            DateTime    @db.Date
+  startDate          DateTime
+  endDate            DateTime
   days               Int
   reason             String
   status             LeaveStatus @default(PENDING)
@@ -221,7 +229,7 @@ model LeaveRequest {
   rejectionReason    String?
   cancelledAt        DateTime?
   cancellationReason String?
-  attachments        String[]
+  attachments        Json        @default("[]")
   createdAt          DateTime    @default(now())
   updatedAt          DateTime    @updatedAt
   approvedBy         Employee?   @relation("ApprovedLeaveRequests", fields: [approvedById], references: [id])
@@ -234,15 +242,15 @@ model LeaveRequest {
 model PayrollRecord {
   id             String        @id @default(uuid())
   employeeId     String
-  payPeriodStart DateTime      @db.Date
-  payPeriodEnd   DateTime      @db.Date
-  baseSalary     Decimal       @db.Decimal(10, 2)
-  overtime       Decimal       @default(0) @db.Decimal(10, 2)
-  bonuses        Decimal       @default(0) @db.Decimal(10, 2)
-  allowances     Decimal       @default(0) @db.Decimal(10, 2)
-  deductions     Decimal       @default(0) @db.Decimal(10, 2)
-  tax            Decimal       @default(0) @db.Decimal(10, 2)
-  netPay         Decimal       @db.Decimal(10, 2)
+  payPeriodStart DateTime
+  payPeriodEnd   DateTime
+  baseSalary     Float
+  overtime       Float         @default(0)
+  bonuses        Float         @default(0)
+  allowances     Float         @default(0)
+  deductions     Float         @default(0)
+  tax            Float         @default(0)
+  netPay         Float
   status         PayrollStatus @default(DRAFT)
   processedAt    DateTime?
   paidAt         DateTime?
@@ -258,11 +266,11 @@ model JobPosting {
   id             String            @id @default(uuid())
   title          String
   description    String
-  requirements   String[]
+  requirements   Json              @default("[]")
   departmentId   String?
   positionId     String?
-  salaryMin      Decimal?          @db.Decimal(10, 2)
-  salaryMax      Decimal?          @db.Decimal(10, 2)
+  salaryMin      Float?
+  salaryMax      Float?
   location       String?
   employmentType EmploymentType    @default(FULL_TIME)
   status         RecruitmentStatus @default(OPEN)
@@ -308,7 +316,7 @@ model Interview {
   duration      Int
   location      String?
   type          String?
-  interviewers  String[]
+  interviewers  Json           @default("[]")
   status        String         @default("scheduled")
   feedback      String?
   rating        Int?
@@ -323,10 +331,10 @@ model PerformanceReview {
   id                  String             @id @default(uuid())
   employeeId          String
   reviewerId          String
-  reviewPeriodStart   DateTime           @db.Date
-  reviewPeriodEnd     DateTime           @db.Date
+  reviewPeriodStart   DateTime
+  reviewPeriodEnd     DateTime
   overallRating       PerformanceRating?
-  goals               String[]
+  goals               Json                @default("[]")
   achievements        String?
   areasForImprovement String?
   feedback            String?
@@ -453,17 +461,29 @@ model DisciplinaryAction {
   type         String
   reason       String
   description  String?
-  actionDate   DateTime  @db.Date
+  actionDate   DateTime
   severity     String?
   followUpDate DateTime?
   resolution   String?
-  documents    String[]
+  documents    Json        @default("[]")
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
   employee     Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
   issuedBy     Employee? @relation("IssuedActions", fields: [issuedById], references: [id])
 
   @@map("disciplinary_actions")
+}
+
+model TimeEntry {
+  id         String    @id @default(uuid())
+  employeeId String
+  checkIn    DateTime
+  checkOut   DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  employee   Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@map("time_entries")
 }
 
 model AuditLog {
@@ -482,6 +502,17 @@ model AuditLog {
   @@map("audit_logs")
 }
 
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  message   String
+  isRead    Boolean  @default(false)
+  meta      Json?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
 model Setting {
   id          String   @id @default(uuid())
   key         String   @unique
@@ -614,6 +645,7 @@ enum AuditAction {
   CREATE
   UPDATE
   DELETE
+  READ
   LOGIN
   LOGOUT
   PASSWORD_CHANGE

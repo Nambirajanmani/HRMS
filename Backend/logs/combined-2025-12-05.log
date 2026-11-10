@@ -1,0 +1,760 @@
+{"level":"info","message":"Scheduled job: birthday-notifications with cron: 0 9 * * *","service":"hrms-backend","timestamp":"2025-12-05 10:45:48"}
+{"level":"info","message":"Scheduled job: leave-balance-update with cron: 0 0 * * *","service":"hrms-backend","timestamp":"2025-12-05 10:45:48"}
+{"level":"info","message":"Scheduled job: performance-review-reminders with cron: 0 9 * * 1","service":"hrms-backend","timestamp":"2025-12-05 10:45:48"}
+{"level":"info","message":"Scheduled job: payroll-reminders with cron: 0 9 1 * *","service":"hrms-backend","timestamp":"2025-12-05 10:45:48"}
+{"level":"info","message":"Scheduled job: attendance-summary with cron: 0 18 * * *","service":"hrms-backend","timestamp":"2025-12-05 10:45:48"}
+{"level":"info","message":"Scheduled job: cleanup-audit-logs with cron: 0 2 * * 0","service":"hrms-backend","timestamp":"2025-12-05 10:45:48"}
+{"level":"info","message":"Scheduler service initialized successfully","service":"hrms-backend","timestamp":"2025-12-05 10:45:48"}
+{"level":"info","message":"🚀 Backend running on port 3000","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"📊 Health check: http://localhost:3000/api/health","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"Frontend URL allowed: http://localhost:5173","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"=== REGISTERED ROUTES ===","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/auth//register","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/auth//login","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/auth//me","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/employees//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/employees//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/departments//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/departments//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PATCH ^/api/departments//:id/toggle-status","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/attendance//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/attendance//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/leave//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/leave//:id/approve-reject","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave//employee/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave//summary/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave//calendar/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/leave//bulk-approve","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/users//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/users//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/users//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/users//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PATCH ^/api/users//change-password","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/users//reset-password-request","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PATCH ^/api/users//reset-password","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/users//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/users//:id/activity","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/positions//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/positions//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/payroll//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/payroll//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/payroll//employee/:employeeId/summary","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/payroll//:id/process","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/payroll//:id/pay","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/documents//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/documents//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/documents//:id/download","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/documents//:id/view","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/audit-logs//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/audit-logs//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/audit-logs//stats/summary","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/audit-logs//cleanup","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/reports//employees/stats","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/reports//attendance","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/reports//leave","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/reports//payroll","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/reports//audit","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave-policies//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/leave-policies//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave-policies//active","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave-policies//:id/usage-stats","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave-balances//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/leave-balances//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave-balances//employee/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/leave-balances//bulk-create","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave-balances//summary/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/leave-balances//:id/adjustment","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/leave-balances//stats/overview","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/job-postings//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/job-postings//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/job-applications//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/job-applications//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/interviews//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/interviews//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/performance-reviews//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/performance-reviews//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/onboarding-templates//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/onboarding-templates//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/onboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/onboarding-tasks//bulk-update","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//employee/:employeeId/summary","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/offboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/offboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/training-programs//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/training-programs//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/training-records//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/training-records//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/disciplinary-actions//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/disciplinary-actions//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/settings//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"POST ^/api/settings//","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"PUT ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"DELETE ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/settings//public","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET ^/api/settings//categories","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"GET /api/health","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"=== TOTAL ROUTES: 144 ===","service":"hrms-backend","timestamp":"2025-12-05 10:45:49"}
+{"level":"info","message":"Incoming request: POST /api/auth/login","requestContext":{"requestId":"b5acf4dd-27d4-48fa-b533-9a1f0f1bc273","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 12:38:40"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 12:38:40"}
+{"baseUrl":"","headers":{"authorization":"None","content-type":"application/json","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"POST","originalUrl":"/api/auth/login","params":{},"path":"/api/auth/login","query":{},"service":"hrms-backend","timestamp":"2025-12-05 12:38:40"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 12:38:41"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_EXPIRES_IN not set, using default: 15m","service":"hrms-backend","timestamp":"2025-12-05 12:38:41"}
+{"level":"warn","message":"Environment variable JWT_REFRESH_SECRET not set, using default: default_refresh_secret","service":"hrms-backend","timestamp":"2025-12-05 12:38:41"}
+{"level":"warn","message":"Environment variable JWT_REFRESH_EXPIRES_IN not set, using default: 7d","service":"hrms-backend","timestamp":"2025-12-05 12:38:41"}
+{"level":"warn","message":"Environment variable REFRESH_TOKEN_EXPIRES_MS not set, using default: 604800000","service":"hrms-backend","timestamp":"2025-12-05 12:38:41"}
+{"email":"admin@example.com","level":"info","message":"User logged in successfully","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 12:38:41","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"POST","requestContext":{"requestId":"b5acf4dd-27d4-48fa-b533-9a1f0f1bc273","userId":null},"requestId":null,"responseTime":480,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 12:38:41","url":"/api/auth/login","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/reports/employees/stats","requestContext":{"requestId":"584cc996-912a-4d59-9be8-e1c63be9e72c","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 12:38:41"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 12:38:41"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/reports/employees/stats","params":{},"path":"/api/reports/employees/stats","query":{},"service":"hrms-backend","timestamp":"2025-12-05 12:38:41"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 12:38:41"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 12:38:41","url":"/api/reports/employees/stats","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"584cc996-912a-4d59-9be8-e1c63be9e72c","userId":null},"requestId":null,"responseTime":242,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 12:38:41","url":"/api/reports/employees/stats","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/leave?page=1&limit=10&search=&status=","requestContext":{"requestId":"f49feff3-8807-420f-8bc7-d8733778e907","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 12:39:18"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 12:39:18"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/leave?page=1&limit=10&search=&status=","params":{},"path":"/api/leave","query":{"limit":"10","page":"1","search":"","status":""},"service":"hrms-backend","timestamp":"2025-12-05 12:39:18"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 12:39:18"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 12:39:18","url":"/api/leave?page=1&limit=10&search=&status=","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 12:39:18"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"f49feff3-8807-420f-8bc7-d8733778e907","userId":null},"resource":"leave_requests","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 12:39:18","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"f49feff3-8807-420f-8bc7-d8733778e907","userId":null},"requestId":null,"responseTime":161,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 12:39:18","url":"/api/leave?page=1&limit=10&search=&status=","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","requestContext":{"requestId":"c8417f70-8cc1-457d-b1a1-f65c9920c128","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 12:45:10"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 12:45:10"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","params":{},"path":"/api/departments","query":{"limit":"10","page":"1","sortBy":"name","sortOrder":"asc"},"service":"hrms-backend","timestamp":"2025-12-05 12:45:10"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 12:45:10"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 12:45:10","url":"/api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 12:45:11"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"c8417f70-8cc1-457d-b1a1-f65c9920c128","userId":null},"resource":"departments","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 12:45:11","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"c8417f70-8cc1-457d-b1a1-f65c9920c128","userId":null},"requestId":null,"responseTime":244,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 12:45:11","url":"/api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/leave?page=1&limit=10&search=&status=","requestContext":{"requestId":"a2a0ac9e-81e2-4d27-a510-5f929f9a9ef7","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 12:46:15"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 12:46:15"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/leave?page=1&limit=10&search=&status=","params":{},"path":"/api/leave","query":{"limit":"10","page":"1","search":"","status":""},"service":"hrms-backend","timestamp":"2025-12-05 12:46:15"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 12:46:15"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 12:46:15","url":"/api/leave?page=1&limit=10&search=&status=","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 12:46:15"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"a2a0ac9e-81e2-4d27-a510-5f929f9a9ef7","userId":null},"resource":"leave_requests","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 12:46:15","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"a2a0ac9e-81e2-4d27-a510-5f929f9a9ef7","userId":null},"requestId":null,"responseTime":28,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 12:46:15","url":"/api/leave?page=1&limit=10&search=&status=","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: POST /api/auth/login","requestContext":{"requestId":"430e6b5f-4129-45a2-a4f0-9f5b426d8eff","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 12:46:39"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 12:46:39"}
+{"baseUrl":"","headers":{"authorization":"None","content-type":"application/json","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"POST","originalUrl":"/api/auth/login","params":{},"path":"/api/auth/login","query":{},"service":"hrms-backend","timestamp":"2025-12-05 12:46:39"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 12:46:39"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_EXPIRES_IN not set, using default: 15m","service":"hrms-backend","timestamp":"2025-12-05 12:46:39"}
+{"level":"warn","message":"Environment variable JWT_REFRESH_SECRET not set, using default: default_refresh_secret","service":"hrms-backend","timestamp":"2025-12-05 12:46:39"}
+{"level":"warn","message":"Environment variable JWT_REFRESH_EXPIRES_IN not set, using default: 7d","service":"hrms-backend","timestamp":"2025-12-05 12:46:39"}
+{"level":"warn","message":"Environment variable REFRESH_TOKEN_EXPIRES_MS not set, using default: 604800000","service":"hrms-backend","timestamp":"2025-12-05 12:46:39"}
+{"email":"admin@example.com","level":"info","message":"User logged in successfully","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 12:46:39","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"POST","requestContext":{"requestId":"430e6b5f-4129-45a2-a4f0-9f5b426d8eff","userId":null},"requestId":null,"responseTime":141,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 12:46:39","url":"/api/auth/login","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Scheduled job: birthday-notifications with cron: 0 9 * * *","service":"hrms-backend","timestamp":"2025-12-05 13:07:20"}
+{"level":"info","message":"Scheduled job: leave-balance-update with cron: 0 0 * * *","service":"hrms-backend","timestamp":"2025-12-05 13:07:20"}
+{"level":"info","message":"Scheduled job: performance-review-reminders with cron: 0 9 * * 1","service":"hrms-backend","timestamp":"2025-12-05 13:07:20"}
+{"level":"info","message":"Scheduled job: payroll-reminders with cron: 0 9 1 * *","service":"hrms-backend","timestamp":"2025-12-05 13:07:20"}
+{"level":"info","message":"Scheduled job: attendance-summary with cron: 0 18 * * *","service":"hrms-backend","timestamp":"2025-12-05 13:07:20"}
+{"level":"info","message":"Scheduled job: cleanup-audit-logs with cron: 0 2 * * 0","service":"hrms-backend","timestamp":"2025-12-05 13:07:20"}
+{"level":"info","message":"Scheduler service initialized successfully","service":"hrms-backend","timestamp":"2025-12-05 13:07:20"}
+{"level":"info","message":"🚀 Backend running on port 3000","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"📊 Health check: http://localhost:3000/api/health","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"Frontend URL allowed: http://localhost:5173","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"=== REGISTERED ROUTES ===","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/auth//register","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/auth//login","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/auth//me","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/employees//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/employees//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/departments//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/departments//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PATCH ^/api/departments//:id/toggle-status","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/attendance//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/attendance//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/leave//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/leave//:id/approve-reject","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave//employee/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave//summary/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave//calendar/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/leave//bulk-approve","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/users//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/users//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/users//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/users//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PATCH ^/api/users//change-password","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/users//reset-password-request","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PATCH ^/api/users//reset-password","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/users//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/users//:id/activity","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/positions//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/positions//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/payroll//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/payroll//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/payroll//employee/:employeeId/summary","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/payroll//:id/process","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/payroll//:id/pay","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/documents//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/documents//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/documents//:id/download","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/documents//:id/view","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/audit-logs//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/audit-logs//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/audit-logs//stats/summary","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/audit-logs//cleanup","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/reports//employees/stats","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/reports//attendance","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/reports//leave","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/reports//payroll","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/reports//audit","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave-policies//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/leave-policies//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave-policies//active","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave-policies//:id/usage-stats","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave-balances//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/leave-balances//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave-balances//employee/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/leave-balances//bulk-create","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave-balances//summary/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/leave-balances//:id/adjustment","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/leave-balances//stats/overview","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/job-postings//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/job-postings//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/job-applications//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/job-applications//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/interviews//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/interviews//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/performance-reviews//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/performance-reviews//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/onboarding-templates//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/onboarding-templates//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/onboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/onboarding-tasks//bulk-update","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//employee/:employeeId/summary","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/offboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/offboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/training-programs//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/training-programs//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/training-records//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/training-records//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/disciplinary-actions//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/disciplinary-actions//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/settings//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"POST ^/api/settings//","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"PUT ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"DELETE ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/settings//public","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET ^/api/settings//categories","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"GET /api/health","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"=== TOTAL ROUTES: 144 ===","service":"hrms-backend","timestamp":"2025-12-05 13:07:21"}
+{"level":"info","message":"Scheduled job: birthday-notifications with cron: 0 9 * * *","service":"hrms-backend","timestamp":"2025-12-05 13:14:52"}
+{"level":"info","message":"Scheduled job: leave-balance-update with cron: 0 0 * * *","service":"hrms-backend","timestamp":"2025-12-05 13:14:52"}
+{"level":"info","message":"Scheduled job: performance-review-reminders with cron: 0 9 * * 1","service":"hrms-backend","timestamp":"2025-12-05 13:14:52"}
+{"level":"info","message":"Scheduled job: payroll-reminders with cron: 0 9 1 * *","service":"hrms-backend","timestamp":"2025-12-05 13:14:52"}
+{"level":"info","message":"Scheduled job: attendance-summary with cron: 0 18 * * *","service":"hrms-backend","timestamp":"2025-12-05 13:14:52"}
+{"level":"info","message":"Scheduled job: cleanup-audit-logs with cron: 0 2 * * 0","service":"hrms-backend","timestamp":"2025-12-05 13:14:52"}
+{"level":"info","message":"Scheduler service initialized successfully","service":"hrms-backend","timestamp":"2025-12-05 13:14:52"}
+{"level":"info","message":"🚀 Backend running on port 3000","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"📊 Health check: http://localhost:3000/api/health","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"Frontend URL allowed: http://localhost:5173","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"=== REGISTERED ROUTES ===","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/auth//register","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/auth//login","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/auth//me","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/employees//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/employees//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/employees//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/departments//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/departments//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/departments//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PATCH ^/api/departments//:id/toggle-status","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/attendance//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/attendance//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/attendance//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/leave//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/leave//:id/approve-reject","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/leave//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave//employee/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave//summary/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave//calendar/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/leave//bulk-approve","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/users//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/users//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/users//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/users//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PATCH ^/api/users//change-password","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/users//reset-password-request","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PATCH ^/api/users//reset-password","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/users//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/users//:id/activity","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/positions//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/positions//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/positions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/payroll//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/payroll//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/payroll//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/payroll//employee/:employeeId/summary","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/payroll//:id/process","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/payroll//:id/pay","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/documents//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/documents//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/documents//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/documents//:id/download","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/documents//:id/view","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/audit-logs//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/audit-logs//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/audit-logs//stats/summary","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/audit-logs//cleanup","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/reports//employees/stats","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/reports//attendance","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/reports//leave","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/reports//payroll","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/reports//audit","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave-policies//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/leave-policies//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/leave-policies//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave-policies//active","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave-policies//:id/usage-stats","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave-balances//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/leave-balances//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/leave-balances//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave-balances//employee/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/leave-balances//bulk-create","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave-balances//summary/:employeeId","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/leave-balances//:id/adjustment","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/leave-balances//stats/overview","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/job-postings//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/job-postings//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/job-postings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/job-applications//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/job-applications//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/job-applications//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/interviews//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/interviews//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/interviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/performance-reviews//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/performance-reviews//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/performance-reviews//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/onboarding-templates//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/onboarding-templates//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/onboarding-templates//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/onboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/onboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/onboarding-tasks//bulk-update","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/onboarding-tasks//employee/:employeeId/summary","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/offboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/offboarding-tasks//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/offboarding-tasks//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/training-programs//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/training-programs//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/training-programs//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/training-records//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/training-records//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/training-records//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/disciplinary-actions//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/disciplinary-actions//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/disciplinary-actions//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/settings//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"POST ^/api/settings//","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"PUT ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"DELETE ^/api/settings//:id","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/settings//public","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET ^/api/settings//categories","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"GET /api/health","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"=== TOTAL ROUTES: 144 ===","service":"hrms-backend","timestamp":"2025-12-05 13:14:53"}
+{"level":"info","message":"Incoming request: POST /api/auth/login","requestContext":{"requestId":"d5094076-7b91-4e6f-9898-332fabfe24cb","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"baseUrl":"","headers":{"authorization":"None","content-type":"application/json","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"POST","originalUrl":"/api/auth/login","params":{},"path":"/api/auth/login","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_EXPIRES_IN not set, using default: 15m","service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"level":"warn","message":"Environment variable JWT_REFRESH_SECRET not set, using default: default_refresh_secret","service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"level":"warn","message":"Environment variable JWT_REFRESH_EXPIRES_IN not set, using default: 7d","service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"level":"warn","message":"Environment variable REFRESH_TOKEN_EXPIRES_MS not set, using default: 604800000","service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"email":"admin@example.com","level":"info","message":"User logged in successfully","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:19:01","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"POST","requestContext":{"requestId":"d5094076-7b91-4e6f-9898-332fabfe24cb","userId":null},"requestId":null,"responseTime":229,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 15:19:01","url":"/api/auth/login","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/reports/employees/stats","requestContext":{"requestId":"7abd35f5-f5f4-47dc-8b72-7cf57564f195","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/reports/employees/stats","params":{},"path":"/api/reports/employees/stats","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:19:01"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:19:01","url":"/api/reports/employees/stats","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"7abd35f5-f5f4-47dc-8b72-7cf57564f195","userId":null},"requestId":null,"responseTime":184,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:19:01","url":"/api/reports/employees/stats","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/payroll?page=1&limit=10&search=&status=","requestContext":{"requestId":"1a950f82-90fe-4a9a-9299-77756b859008","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:19:07"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:07"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/payroll?page=1&limit=10&search=&status=","params":{},"path":"/api/payroll","query":{"limit":"10","page":"1","search":"","status":""},"service":"hrms-backend","timestamp":"2025-12-05 15:19:07"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:19:07"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:19:07","url":"/api/payroll?page=1&limit=10&search=&status=","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:07"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"1a950f82-90fe-4a9a-9299-77756b859008","userId":null},"resource":"payroll_records","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:19:07","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"1a950f82-90fe-4a9a-9299-77756b859008","userId":null},"requestId":null,"responseTime":149,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:19:07","url":"/api/payroll?page=1&limit=10&search=&status=","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/leave?page=1&limit=10&search=&status=","requestContext":{"requestId":"fa5675bd-ff5f-4c73-8f16-c93b1d05c768","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:19:09"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:09"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/leave?page=1&limit=10&search=&status=","params":{},"path":"/api/leave","query":{"limit":"10","page":"1","search":"","status":""},"service":"hrms-backend","timestamp":"2025-12-05 15:19:09"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:19:09"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:19:09","url":"/api/leave?page=1&limit=10&search=&status=","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:09"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"fa5675bd-ff5f-4c73-8f16-c93b1d05c768","userId":null},"resource":"leave_requests","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:19:09","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"fa5675bd-ff5f-4c73-8f16-c93b1d05c768","userId":null},"requestId":null,"responseTime":18,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:19:09","url":"/api/leave?page=1&limit=10&search=&status=","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/attendance?page=1&limit=10&search=&date=","requestContext":{"requestId":"848c2073-a55f-4484-8531-389bf55abcc1","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:19:13"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:13"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/attendance?page=1&limit=10&search=&date=","params":{},"path":"/api/attendance","query":{"date":"","limit":"10","page":"1","search":""},"service":"hrms-backend","timestamp":"2025-12-05 15:19:13"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:19:13"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:19:13","url":"/api/attendance?page=1&limit=10&search=&date=","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:13"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"848c2073-a55f-4484-8531-389bf55abcc1","userId":null},"resource":"attendance","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:19:13","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"848c2073-a55f-4484-8531-389bf55abcc1","userId":null},"requestId":null,"responseTime":20,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:19:13","url":"/api/attendance?page=1&limit=10&search=&date=","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","requestContext":{"requestId":"a5651bdf-4d99-4de5-ae16-5e0a7a31d719","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:19:14"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:14"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","params":{},"path":"/api/departments","query":{"limit":"10","page":"1","sortBy":"name","sortOrder":"asc"},"service":"hrms-backend","timestamp":"2025-12-05 15:19:14"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:19:14"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:19:14","url":"/api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:14"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"a5651bdf-4d99-4de5-ae16-5e0a7a31d719","userId":null},"resource":"departments","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:19:14","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"a5651bdf-4d99-4de5-ae16-5e0a7a31d719","userId":null},"requestId":null,"responseTime":26,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:19:14","url":"/api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees?page=1&limit=10","requestContext":{"requestId":"6f4c1875-2391-4786-98b6-366ce37e7b77","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:19:22"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:22"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees?page=1&limit=10","params":{},"path":"/api/employees","query":{"limit":"10","page":"1"},"service":"hrms-backend","timestamp":"2025-12-05 15:19:22"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:19:22"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:19:22","url":"/api/employees?page=1&limit=10","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:22"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"6f4c1875-2391-4786-98b6-366ce37e7b77","userId":null},"resource":"employees","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:19:22","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"6f4c1875-2391-4786-98b6-366ce37e7b77","userId":null},"requestId":null,"responseTime":25,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:19:22","url":"/api/employees?page=1&limit=10","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","requestContext":{"requestId":"92dd4f77-54a0-416f-b3ee-34d0959b1676","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:19:50"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:50"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","params":{},"path":"/api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:19:50"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:19:50"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:19:50","url":"/api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:19:50"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"92dd4f77-54a0-416f-b3ee-34d0959b1676","userId":null},"resource":"employees","resourceId":"719d950b-1489-4ee7-83a0-9bc77b2d7b40","service":"hrms-backend","timestamp":"2025-12-05 15:19:50","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"92dd4f77-54a0-416f-b3ee-34d0959b1676","userId":null},"requestId":null,"responseTime":21,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:19:50","url":"/api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","requestContext":{"requestId":"3824cc23-775e-46e9-b099-967ef16600b0","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:20:04"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:20:04"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","params":{},"path":"/api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:20:04"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:20:04"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:20:04","url":"/api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:20:04"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"3824cc23-775e-46e9-b099-967ef16600b0","userId":null},"resource":"employees","resourceId":"491c99b7-a81f-46a3-9094-ea620a0109aa","service":"hrms-backend","timestamp":"2025-12-05 15:20:04","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"3824cc23-775e-46e9-b099-967ef16600b0","userId":null},"requestId":null,"responseTime":20,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:20:04","url":"/api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","requestContext":{"requestId":"4b128269-e868-41e2-9ff2-fc35cd745858","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:20:11"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:20:11"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","params":{},"path":"/api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:20:11"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:20:11"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:20:11","url":"/api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:20:11"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"4b128269-e868-41e2-9ff2-fc35cd745858","userId":null},"resource":"employees","resourceId":"95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","service":"hrms-backend","timestamp":"2025-12-05 15:20:11","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"4b128269-e868-41e2-9ff2-fc35cd745858","userId":null},"requestId":null,"responseTime":21,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 15:20:11","url":"/api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/departments?limit=100&isActive=true","requestContext":{"requestId":"3b38aecd-7848-406c-86f2-2fc46e94f08e","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/departments?limit=100&isActive=true","params":{},"path":"/api/departments","query":{"isActive":"true","limit":"100"},"service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"info","message":"Incoming request: GET /api/positions?limit=100&isActive=true","requestContext":{"requestId":"ad03258a-fa01-4498-be88-85e553639e22","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/positions?limit=100&isActive=true","params":{},"path":"/api/positions","query":{"isActive":"true","limit":"100"},"service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"info","message":"Incoming request: GET /api/employees?limit=200&employmentStatus=ACTIVE","requestContext":{"requestId":"63230ce9-f2aa-4a15-b6af-26b33d4df234","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees?limit=200&employmentStatus=ACTIVE","params":{},"path":"/api/employees","query":{"employmentStatus":"ACTIVE","limit":"200"},"service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:20:20","url":"/api/departments?limit=100&isActive=true","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:20:20","url":"/api/positions?limit=100&isActive=true","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"ad03258a-fa01-4498-be88-85e553639e22","userId":null},"requestId":null,"responseTime":13,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:20:20","url":"/api/positions?limit=100&isActive=true","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:20:20","url":"/api/employees?limit=200&employmentStatus=ACTIVE","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:20:20"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"3b38aecd-7848-406c-86f2-2fc46e94f08e","userId":null},"resource":"departments","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:20:20","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"3b38aecd-7848-406c-86f2-2fc46e94f08e","userId":null},"requestId":null,"responseTime":35,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:20:20","url":"/api/departments?limit=100&isActive=true","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"63230ce9-f2aa-4a15-b6af-26b33d4df234","userId":null},"resource":"employees","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:20:20","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"63230ce9-f2aa-4a15-b6af-26b33d4df234","userId":null},"requestId":null,"responseTime":30,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:20:20","url":"/api/employees?limit=200&employmentStatus=ACTIVE","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: POST /api/employees","requestContext":{"requestId":"bd050b97-7ad7-4bb9-920d-c7e3ba7f1795","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:21:39"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:21:39"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","content-type":"application/json","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"POST","originalUrl":"/api/employees","params":{},"path":"/api/employees","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:21:39"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:21:39"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:21:39","url":"/api/employees","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"POST","requestContext":{"requestId":"bd050b97-7ad7-4bb9-920d-c7e3ba7f1795","userId":null},"requestId":null,"responseTime":16,"service":"hrms-backend","statusCode":400,"timestamp":"2025-12-05 15:21:39","url":"/api/employees","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: POST /api/employees","requestContext":{"requestId":"3a882de3-9aa5-4126-94b5-14a99d8f26a5","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:23:46"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:23:46"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","content-type":"application/json","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"POST","originalUrl":"/api/employees","params":{},"path":"/api/employees","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:23:46"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:23:46"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:23:46","url":"/api/employees","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:23:46"}
+{"action":"CREATE","level":"info","message":"Audit log created","requestContext":{"requestId":"3a882de3-9aa5-4126-94b5-14a99d8f26a5","userId":null},"resource":"employees","resourceId":"0b0aeaee-6b76-4009-bf88-c81c8f9f84a1","service":"hrms-backend","timestamp":"2025-12-05 15:23:46","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"POST","requestContext":{"requestId":"3a882de3-9aa5-4126-94b5-14a99d8f26a5","userId":null},"requestId":null,"responseTime":49,"service":"hrms-backend","statusCode":201,"timestamp":"2025-12-05 15:23:46","url":"/api/employees","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees/undefined","requestContext":{"requestId":"2ffa4c1a-a3ef-44f0-be99-d05abafd8353","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:23:46"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:23:46"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees/undefined","params":{},"path":"/api/employees/undefined","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:23:46"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:23:46"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:23:46","url":"/api/employees/undefined","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"error":"Invalid employee ID","level":"error","message":"Employee authorization error","service":"hrms-backend","timestamp":"2025-12-05 15:23:46","url":"/api/employees/undefined"}
+{"ip":"::1","level":"error","message":"Invalid employee ID","method":"GET","service":"hrms-backend","stack":"Error: Invalid employee ID\n    at authorizeEmployee (file:///D:/HRMS/Backend/src/middleware/auth.js:92:13)\n    at Layer.handle [as handle_request] (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at file:///D:/HRMS/Backend/src/middleware/auth.js:80:5\n    at Layer.handle [as handle_request] (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at authenticate (file:///D:/HRMS/Backend/src/middleware/auth.js:56:5)","timestamp":"2025-12-05 15:23:46","url":"/api/employees/undefined","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"2ffa4c1a-a3ef-44f0-be99-d05abafd8353","userId":null},"requestId":null,"responseTime":7,"service":"hrms-backend","statusCode":400,"timestamp":"2025-12-05 15:23:46","url":"/api/employees/undefined","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees/undefined","requestContext":{"requestId":"b45ddce8-a7d1-4210-ab36-b70131ee8d8b","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:23:47"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:23:47"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees/undefined","params":{},"path":"/api/employees/undefined","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:23:47"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:23:47"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:23:47","url":"/api/employees/undefined","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"error":"Invalid employee ID","level":"error","message":"Employee authorization error","service":"hrms-backend","timestamp":"2025-12-05 15:23:47","url":"/api/employees/undefined"}
+{"ip":"::1","level":"error","message":"Invalid employee ID","method":"GET","service":"hrms-backend","stack":"Error: Invalid employee ID\n    at authorizeEmployee (file:///D:/HRMS/Backend/src/middleware/auth.js:92:13)\n    at Layer.handle [as handle_request] (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at file:///D:/HRMS/Backend/src/middleware/auth.js:80:5\n    at Layer.handle [as handle_request] (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at authenticate (file:///D:/HRMS/Backend/src/middleware/auth.js:56:5)","timestamp":"2025-12-05 15:23:47","url":"/api/employees/undefined","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"b45ddce8-a7d1-4210-ab36-b70131ee8d8b","userId":null},"requestId":null,"responseTime":7,"service":"hrms-backend","statusCode":400,"timestamp":"2025-12-05 15:23:47","url":"/api/employees/undefined","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees?page=1&limit=10","requestContext":{"requestId":"79821c3c-2c8f-40f6-a4d6-61fb8772b79f","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:23:59"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:23:59"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees?page=1&limit=10","params":{},"path":"/api/employees","query":{"limit":"10","page":"1"},"service":"hrms-backend","timestamp":"2025-12-05 15:23:59"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:23:59"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:23:59","url":"/api/employees?page=1&limit=10","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:23:59"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"79821c3c-2c8f-40f6-a4d6-61fb8772b79f","userId":null},"resource":"employees","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:23:59","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"79821c3c-2c8f-40f6-a4d6-61fb8772b79f","userId":null},"requestId":null,"responseTime":24,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 15:23:59","url":"/api/employees?page=1&limit=10","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","requestContext":{"requestId":"ad975f15-cfea-4913-8ca5-324aa097da32","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:24:13"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:24:13"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","params":{},"path":"/api/departments","query":{"limit":"10","page":"1","sortBy":"name","sortOrder":"asc"},"service":"hrms-backend","timestamp":"2025-12-05 15:24:13"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:24:13"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:24:13","url":"/api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:24:14"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"ad975f15-cfea-4913-8ca5-324aa097da32","userId":null},"resource":"departments","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:24:14","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"ad975f15-cfea-4913-8ca5-324aa097da32","userId":null},"requestId":null,"responseTime":162,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 15:24:14","url":"/api/departments?page=1&limit=10&sortBy=name&sortOrder=asc","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees/undefined","requestContext":{"requestId":"f01ec3b0-d1e6-4705-aa85-975a53c75e30","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:18"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:18"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees/undefined","params":{},"path":"/api/employees/undefined","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:25:18"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:18"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:18","url":"/api/employees/undefined","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"error":"Invalid employee ID","level":"error","message":"Employee authorization error","service":"hrms-backend","timestamp":"2025-12-05 15:25:18","url":"/api/employees/undefined"}
+{"ip":"::1","level":"error","message":"Invalid employee ID","method":"GET","service":"hrms-backend","stack":"Error: Invalid employee ID\n    at authorizeEmployee (file:///D:/HRMS/Backend/src/middleware/auth.js:92:13)\n    at Layer.handle [as handle_request] (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at file:///D:/HRMS/Backend/src/middleware/auth.js:80:5\n    at Layer.handle [as handle_request] (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\HRMS\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at authenticate (file:///D:/HRMS/Backend/src/middleware/auth.js:56:5)","timestamp":"2025-12-05 15:25:18","url":"/api/employees/undefined","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"f01ec3b0-d1e6-4705-aa85-975a53c75e30","userId":null},"requestId":null,"responseTime":7,"service":"hrms-backend","statusCode":400,"timestamp":"2025-12-05 15:25:18","url":"/api/employees/undefined","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/departments?limit=100&isActive=true","requestContext":{"requestId":"8ae6bbde-4af2-40be-8793-e3f3e49e7059","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/departments?limit=100&isActive=true","params":{},"path":"/api/departments","query":{"isActive":"true","limit":"100"},"service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"level":"info","message":"Incoming request: GET /api/positions?limit=100&isActive=true","requestContext":{"requestId":"2e02e4e0-4193-4c21-a71f-4ff74b6549b7","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/positions?limit=100&isActive=true","params":{},"path":"/api/positions","query":{"isActive":"true","limit":"100"},"service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"level":"info","message":"Incoming request: GET /api/employees?limit=200&employmentStatus=ACTIVE","requestContext":{"requestId":"ed70093d-c103-4726-a8cd-93bed0312b5b","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees?limit=200&employmentStatus=ACTIVE","params":{},"path":"/api/employees","query":{"employmentStatus":"ACTIVE","limit":"200"},"service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:19","url":"/api/departments?limit=100&isActive=true","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:19","url":"/api/positions?limit=100&isActive=true","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"2e02e4e0-4193-4c21-a71f-4ff74b6549b7","userId":null},"requestId":null,"responseTime":14,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:25:19","url":"/api/positions?limit=100&isActive=true","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:19","url":"/api/employees?limit=200&employmentStatus=ACTIVE","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"8ae6bbde-4af2-40be-8793-e3f3e49e7059","userId":null},"resource":"departments","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:25:19","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"8ae6bbde-4af2-40be-8793-e3f3e49e7059","userId":null},"requestId":null,"responseTime":37,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 15:25:19","url":"/api/departments?limit=100&isActive=true","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:19"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"ed70093d-c103-4726-a8cd-93bed0312b5b","userId":null},"resource":"employees","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:25:19","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"ed70093d-c103-4726-a8cd-93bed0312b5b","userId":null},"requestId":null,"responseTime":34,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 15:25:19","url":"/api/employees?limit=200&employmentStatus=ACTIVE","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","requestContext":{"requestId":"00c964c1-f2eb-4f4e-acc5-a5c1ccf1abbd","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","params":{},"path":"/api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:22","url":"/api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"00c964c1-f2eb-4f4e-acc5-a5c1ccf1abbd","userId":null},"resource":"employees","resourceId":"95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","service":"hrms-backend","timestamp":"2025-12-05 15:25:22","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"00c964c1-f2eb-4f4e-acc5-a5c1ccf1abbd","userId":null},"requestId":null,"responseTime":26,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:25:22","url":"/api/employees/95dd9de0-c6d6-464a-a3e7-92069ddd0e8c","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","requestContext":{"requestId":"30a29e3b-0bbf-4537-9b52-8ca5a773fae8","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","params":{},"path":"/api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:22","url":"/api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:22"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"30a29e3b-0bbf-4537-9b52-8ca5a773fae8","userId":null},"resource":"employees","resourceId":"491c99b7-a81f-46a3-9094-ea620a0109aa","service":"hrms-backend","timestamp":"2025-12-05 15:25:22","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"30a29e3b-0bbf-4537-9b52-8ca5a773fae8","userId":null},"requestId":null,"responseTime":21,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:25:22","url":"/api/employees/491c99b7-a81f-46a3-9094-ea620a0109aa","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","requestContext":{"requestId":"664b15f6-c6c3-4df1-8aea-37a0dcf96001","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:23"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:23"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","params":{},"path":"/api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:25:23"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:23"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:23","url":"/api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:23"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"664b15f6-c6c3-4df1-8aea-37a0dcf96001","userId":null},"resource":"employees","resourceId":"719d950b-1489-4ee7-83a0-9bc77b2d7b40","service":"hrms-backend","timestamp":"2025-12-05 15:25:23","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"664b15f6-c6c3-4df1-8aea-37a0dcf96001","userId":null},"requestId":null,"responseTime":27,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 15:25:23","url":"/api/employees/719d950b-1489-4ee7-83a0-9bc77b2d7b40","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/attendance?page=1&limit=10&search=&date=","requestContext":{"requestId":"fcc4d292-9c4f-4274-958e-6c9bcebffffc","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:24"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:24"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/attendance?page=1&limit=10&search=&date=","params":{},"path":"/api/attendance","query":{"date":"","limit":"10","page":"1","search":""},"service":"hrms-backend","timestamp":"2025-12-05 15:25:24"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:24"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:24","url":"/api/attendance?page=1&limit=10&search=&date=","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:24"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"fcc4d292-9c4f-4274-958e-6c9bcebffffc","userId":null},"resource":"attendance","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:25:24","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"fcc4d292-9c4f-4274-958e-6c9bcebffffc","userId":null},"requestId":null,"responseTime":18,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:25:24","url":"/api/attendance?page=1&limit=10&search=&date=","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/leave?page=1&limit=10&search=&status=","requestContext":{"requestId":"56859108-b25e-4be3-bb10-9155d0c08e81","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/leave?page=1&limit=10&search=&status=","params":{},"path":"/api/leave","query":{"limit":"10","page":"1","search":"","status":""},"service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:25","url":"/api/leave?page=1&limit=10&search=&status=","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"56859108-b25e-4be3-bb10-9155d0c08e81","userId":null},"resource":"leave_requests","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:25:25","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"56859108-b25e-4be3-bb10-9155d0c08e81","userId":null},"requestId":null,"responseTime":18,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:25:25","url":"/api/leave?page=1&limit=10&search=&status=","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/payroll?page=1&limit=10&search=&status=","requestContext":{"requestId":"e36b551c-341c-408b-a820-1b86a121662a","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/payroll?page=1&limit=10&search=&status=","params":{},"path":"/api/payroll","query":{"limit":"10","page":"1","search":"","status":""},"service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:25","url":"/api/payroll?page=1&limit=10&search=&status=","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"action":"READ","level":"info","message":"Audit log created","requestContext":{"requestId":"e36b551c-341c-408b-a820-1b86a121662a","userId":null},"resource":"payroll_records","resourceId":null,"service":"hrms-backend","timestamp":"2025-12-05 15:25:25","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"e36b551c-341c-408b-a820-1b86a121662a","userId":null},"requestId":null,"responseTime":18,"service":"hrms-backend","statusCode":304,"timestamp":"2025-12-05 15:25:25","url":"/api/payroll?page=1&limit=10&search=&status=","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: GET /api/reports/employees/stats","requestContext":{"requestId":"80971f20-2730-49a5-ad31-a304d1487ea7","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"baseUrl":"","headers":{"authorization":"Bearer [REDACTED]","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"GET","originalUrl":"/api/reports/employees/stats","params":{},"path":"/api/reports/employees/stats","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:25:25"}
+{"level":"info","message":"User authenticated","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:25:25","url":"/api/reports/employees/stats","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"GET","requestContext":{"requestId":"80971f20-2730-49a5-ad31-a304d1487ea7","userId":null},"requestId":null,"responseTime":132,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 15:25:25","url":"/api/reports/employees/stats","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}
+{"level":"info","message":"Incoming request: POST /api/auth/login","requestContext":{"requestId":"ed4f62f8-a216-4f67-87b9-fbc9d5aac60f","userId":null},"service":"hrms-backend","timestamp":"2025-12-05 15:43:40"}
+{"level":"warn","message":"Environment variable AUDIT_LOGGING_ENABLED not set, using default: true","service":"hrms-backend","timestamp":"2025-12-05 15:43:40"}
+{"baseUrl":"","headers":{"authorization":"None","content-type":"application/json","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0"},"level":"info","message":"Route Debug Info","method":"POST","originalUrl":"/api/auth/login","params":{},"path":"/api/auth/login","query":{},"service":"hrms-backend","timestamp":"2025-12-05 15:43:40"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_SECRET not set, using default: default_access_secret","service":"hrms-backend","timestamp":"2025-12-05 15:43:40"}
+{"level":"warn","message":"Environment variable JWT_ACCESS_EXPIRES_IN not set, using default: 15m","service":"hrms-backend","timestamp":"2025-12-05 15:43:40"}
+{"level":"warn","message":"Environment variable JWT_REFRESH_SECRET not set, using default: default_refresh_secret","service":"hrms-backend","timestamp":"2025-12-05 15:43:40"}
+{"level":"warn","message":"Environment variable JWT_REFRESH_EXPIRES_IN not set, using default: 7d","service":"hrms-backend","timestamp":"2025-12-05 15:43:40"}
+{"level":"warn","message":"Environment variable REFRESH_TOKEN_EXPIRES_MS not set, using default: 604800000","service":"hrms-backend","timestamp":"2025-12-05 15:43:40"}
+{"email":"admin@example.com","level":"info","message":"User logged in successfully","role":"ADMIN","service":"hrms-backend","timestamp":"2025-12-05 15:43:40","userId":"aa902c09-935a-4721-9083-6d8a61413dca"}
+{"ip":"::1","level":"info","message":"API Call","method":"POST","requestContext":{"requestId":"ed4f62f8-a216-4f67-87b9-fbc9d5aac60f","userId":null},"requestId":null,"responseTime":104,"service":"hrms-backend","statusCode":200,"timestamp":"2025-12-05 15:43:40","url":"/api/auth/login","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0","userId":null}

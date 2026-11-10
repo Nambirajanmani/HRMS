@@ -1,0 +1,50 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\HRMS\\Backend\\logs\\.9cd943785e8c39bc353dd7c1b6f5efd2029a4e22-audit.json",
+    "files": [
+        {
+            "date": 1764825564620,
+            "name": "D:\\HRMS\\Backend\\logs\\combined-2025-12-04.log",
+            "hash": "5ff94829a997d98145c9dcad7dd1f11184d3f92fb7dcaf2e5432d124d73be4b8"
+        },
+        {
+            "date": 1764911748700,
+            "name": "D:\\HRMS\\Backend\\logs\\combined-2025-12-05.log",
+            "hash": "8601d1c6dcb1205e22c845a8655baf86c8a2c76ec20db008d91d4229303e31b7"
+        },
+        {
+            "date": 1765345276312,
+            "name": "D:\\HRMS\\Backend\\logs\\combined-2025-12-10.log",
+            "hash": "16fdeb07e5d4d901c82b0984ebac0a6a7c44fbdbfd569d1857c911c52f4082f1"
+        },
+        {
+            "date": 1765517564315,
+            "name": "D:\\HRMS\\Backend\\logs\\combined-2025-12-12.log",
+            "hash": "09a6cf2e90ee45b020de78b4d2065eb6058ba02913ccfd5bcb98b34857cddd6b"
+        },
+        {
+            "date": 1765524165748,
+            "name": "D:\\HRMS\\Backend\\logs\\combined-2025-12-12.log.1",
+            "hash": "5bb552de917ba5b16eec2aade146e5e7a30927367101629dc123abdcf04931a7"
+        },
+        {
+            "date": 1765774639521,
+            "name": "D:\\HRMS\\Backend\\logs\\combined-2025-12-15.log",
+            "hash": "ccadf93d2dfc2e62030a7c88243c73dc869ac8fa30297dfac5a09c2865641921"
+        },
+        {
+            "date": 1765862263037,
+            "name": "D:\\HRMS\\Backend\\logs\\combined-2025-12-16.log",
+            "hash": "15f06abb1b68db18ed18bfa9e63ff00a5f67e28afd34faefecd84a5142ae78ea"
+        },
+        {
+            "date": 1765946677641,
+            "name": "D:\\HRMS\\Backend\\logs\\combined-2025-12-17.log",
+            "hash": "760ba552bf3a6e1293850dabbf1cf18ef98ce8032d69c816fa96e54da6c65a15"
+        }
+    ],
+    "hashType": "sha256"
+}

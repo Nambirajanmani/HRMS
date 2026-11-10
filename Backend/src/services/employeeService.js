@@ -1,4 +1,6 @@
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 import { AppError, NotFoundError, ValidationError } from '../utils/errors.js';
 import { createAuditLog } from '../middleware/auditMiddleware.js';
 import logger from '../utils/logger.js';
@@ -9,7 +11,9 @@ const prisma = new PrismaClient();
 const validateEmployeeData = async (data, isUpdate = false) => {
   const { employeeId, email, departmentId, positionId, managerId } = data;
 
-  // Check for existing employee ID (only for create or if employeeId is being changed)
+  // Note: Employee ID uniqueness is not enforced to allow flexibility
+  // If uniqueness is needed, uncomment the check below
+  /*
   if (!isUpdate && employeeId) {
     const existingEmployee = await prisma.employee.findUnique({
       where: { employeeId }
@@ -18,6 +22,7 @@ const validateEmployeeData = async (data, isUpdate = false) => {
       throw new ValidationError('Employee ID already exists', null, 'DUPLICATE_EMPLOYEE_ID');
     }
   }
+  */
 
   // Check for existing email (only for create or if email is being changed)
   if (email) {
@@ -95,19 +100,35 @@ const buildEmployeeFilters = (user, filters = {}) => {
 
 const formatEmployeeData = (data) => {
   const formattedData = { ...data };
-  
-  // Convert date strings to Date objects
+
+  // Convert date strings to Date objects with validation
   if (data.dateOfBirth) {
-    formattedData.dateOfBirth = new Date(data.dateOfBirth);
+    const dateOfBirth = new Date(data.dateOfBirth);
+    if (isNaN(dateOfBirth.getTime())) {
+      throw new ValidationError(`Invalid date format for dateOfBirth: ${data.dateOfBirth}`, null, 'INVALID_DATE_FORMAT');
+    }
+    formattedData.dateOfBirth = dateOfBirth;
   }
   if (data.hireDate) {
-    formattedData.hireDate = new Date(data.hireDate);
+    const hireDate = new Date(data.hireDate);
+    if (isNaN(hireDate.getTime())) {
+      throw new ValidationError(`Invalid date format for hireDate: ${data.hireDate}`, null, 'INVALID_DATE_FORMAT');
+    }
+    formattedData.hireDate = hireDate;
   }
   if (data.probationEndDate) {
-    formattedData.probationEndDate = new Date(data.probationEndDate);
+    const probationEndDate = new Date(data.probationEndDate);
+    if (isNaN(probationEndDate.getTime())) {
+      throw new ValidationError(`Invalid date format for probationEndDate: ${data.probationEndDate}`, null, 'INVALID_DATE_FORMAT');
+    }
+    formattedData.probationEndDate = probationEndDate;
   }
   if (data.terminationDate) {
-    formattedData.terminationDate = new Date(data.terminationDate);
+    const terminationDate = new Date(data.terminationDate);
+    if (isNaN(terminationDate.getTime())) {
+      throw new ValidationError(`Invalid date format for terminationDate: ${data.terminationDate}`, null, 'INVALID_DATE_FORMAT');
+    }
+    formattedData.terminationDate = terminationDate;
   }
 
   return formattedData;
@@ -276,9 +297,45 @@ const createEmployee = async (data, req) => {
 
     const formattedData = formatEmployeeData(data);
 
+    // If email provided, create a linked User record with credentials
+    let credentials = null;
+    let userId = formattedData.userId || null;
+    if (formattedData.email && !userId) {
+      // Check if user email already exists
+      const existingUser = await prisma.user.findUnique({
+        where: { email: formattedData.email },
+        include: { employee: true }
+      });
+      if (existingUser) {
+        if (existingUser.employee) {
+          throw new ValidationError('User already exists with this email', null, 'USER_EXISTS');
+        } else {
+          // Link to existing user without employee
+          userId = existingUser.id;
+        }
+      } else {
+        // Create new user
+        const passwordPlain = crypto.randomBytes(4).toString('hex');
+        const saltRounds = parseInt(process.env.BCRYPT_ROUNDS || '12');
+        const hashedPassword = await bcrypt.hash(passwordPlain, saltRounds);
+
+        const user = await prisma.user.create({
+          data: {
+            email: formattedData.email,
+            password: hashedPassword,
+            role: 'EMPLOYEE',
+            isActive: true
+          }
+        });
+        userId = user.id;
+        credentials = { email: formattedData.email, password: passwordPlain };
+      }
+    }
+
     const newEmployee = await prisma.employee.create({
       data: {
         ...formattedData,
+        userId: userId,
         createdById: req.user.id,
         updatedById: req.user.id,
       },
@@ -293,7 +350,11 @@ const createEmployee = async (data, req) => {
     
     logger.info('Employee created in service', { employeeId: newEmployee.id });
     
-    return newEmployee;
+    // return credentials to admin (only when created)
+    if (credentials) {
+      return { employee: newEmployee, credentials };
+    }
+    return { employee: newEmployee };
   } catch (error) {
     if (error instanceof ValidationError) {
       throw error;

@@ -33,19 +33,13 @@ const Login = () => {
     try {
       const result = await login(data)
       if (result.success) {
-        // Determine redirect path based on user role from response
-        const userRole = data.role?.toLowerCase() || 'employee'
-        let redirectPath = '/dashboard'
-        
-        if (userRole === 'employee') {
-          redirectPath = '/user/dashboard'
-        } else if (['admin', 'hr', 'manager'].includes(userRole)) {
-          redirectPath = '/dashboard'
-        }
+        // Redirect based on the ACTUAL role returned by the server (not the form selection)
+        const userRole = (result.user?.role || data.role || 'employee').toLowerCase()
+        const redirectPath = userRole === 'employee' ? '/user/dashboard' : '/dashboard'
 
-        // Use the from location if it exists, otherwise use role-based redirect
-        const finalPath = from !== '/dashboard' ? from : redirectPath
-        
+        // Only honour a previous "from" page if it isn't the landing/login page
+        const finalPath = from && !['/', '/login', '/dashboard'].includes(from) ? from : redirectPath
+
         navigate(finalPath, { replace: true })
       }
     } finally {

@@ -47,7 +47,7 @@ const commonSchemas = {
   id: z.string().uuid('Invalid UUID format').trim(),
   email: z.string().email('Invalid email format').trim().toLowerCase(),
   phone: z.string().regex(/^\+?[\d\s\-\(\)]+$/, 'Invalid phone format').trim().optional(),
-  date: z.string().datetime('Invalid ISO 8601 date format').optional(),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format (yyyy-MM-dd)').optional(),
   pagination: z.object({
     page: z
       .string()
@@ -110,7 +110,7 @@ const baseEmployeeSchema = z.object({
   departmentId: commonSchemas.id.optional(),
   positionId: commonSchemas.id.optional(),
   managerId: commonSchemas.id.optional(),
-  hireDate: commonSchemas.date,
+  hireDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format (yyyy-MM-dd)'),
   baseSalary: z.number().positive('Base salary must be positive').optional(),
 });
 

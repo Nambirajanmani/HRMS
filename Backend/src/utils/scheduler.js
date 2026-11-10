@@ -1,5 +1,6 @@
 import cron from 'node-cron';
 import notificationService from '../services/notificationService.js';
+import emailService from '../services/emailService.js';
 import logger from './logger.js';
 import prisma from '../config/prisma.js';
 

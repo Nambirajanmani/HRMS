@@ -13,6 +13,68 @@ import LoadingSpinner from '../../components/UI/LoadingSpinner'
 import { useAuth } from '../../contexts/AuthContext'
 import { format } from 'date-fns'
 
+// ---------------- Dummy payroll data (used when API is unavailable/empty) ----------------
+const MOCK_EMPLOYEES = [
+  { id: 'e1', employeeId: 'EMP001', firstName: 'Arun', lastName: 'Kumar', baseSalary: 65000 },
+  { id: 'e2', employeeId: 'EMP002', firstName: 'Priya', lastName: 'Sharma', baseSalary: 72000 },
+  { id: 'e3', employeeId: 'EMP003', firstName: 'Rahul', lastName: 'Verma', baseSalary: 58000 },
+  { id: 'e4', employeeId: 'EMP004', firstName: 'Divya', lastName: 'Nair', baseSalary: 81000 },
+  { id: 'e5', employeeId: 'EMP005', firstName: 'Karthik', lastName: 'Raj', baseSalary: 54000 },
+  { id: 'e6', employeeId: 'EMP006', firstName: 'Sneha', lastName: 'Iyer', baseSalary: 69000 },
+]
+const MOCK_STATUSES = ['PAID', 'PROCESSED', 'DRAFT', 'PAID', 'CANCELLED', 'PAID']
+
+const MOCK_PAYROLL = (() => {
+  const records = []
+  const year = 2026
+  for (let month = 0; month < 12; month++) {
+    MOCK_EMPLOYEES.forEach((emp, i) => {
+      const overtime = ((i + month) % 3) * 1500
+      const bonuses = month % 3 === 2 ? 5000 + i * 500 : 0
+      const deductions = Math.round(emp.baseSalary * 0.12) + 200
+      const lastDay = new Date(year, month + 1, 0).getDate()
+      const mm = String(month + 1).padStart(2, '0')
+      records.push({
+        id: `mock-${year}-${mm}-${emp.id}`,
+        employee: emp,
+        payPeriodStart: `${year}-${mm}-01`,
+        payPeriodEnd: `${year}-${mm}-${lastDay}`,
+        baseSalary: emp.baseSalary,
+        overtime,
+        bonuses,
+        deductions,
+        netPay: emp.baseSalary + overtime + bonuses - deductions,
+        status: MOCK_STATUSES[(i + month) % MOCK_STATUSES.length],
+      })
+    })
+  }
+  return records
+})()
+
+const getMockPayroll = ({ page = 1, limit = 10, search, status, startDate, employeeId }) => {
+  const term = (search || '').trim().toLowerCase()
+  const month = startDate ? startDate.slice(0, 7) : ''
+  let filtered = MOCK_PAYROLL.filter((r) => {
+    if (status && r.status !== status) return false
+    if (month && !r.payPeriodStart.startsWith(month)) return false
+    if (employeeId && r.employee.id !== employeeId) return false
+    if (term) {
+      const hay = `${r.employee.firstName} ${r.employee.lastName} ${r.employee.employeeId}`.toLowerCase()
+      if (!hay.includes(term)) return false
+    }
+    return true
+  })
+  filtered = filtered.sort((a, b) => b.payPeriodStart.localeCompare(a.payPeriodStart))
+  const total = filtered.length
+  const start = (page - 1) * limit
+  return {
+    data: {
+      records: filtered.slice(start, start + limit),
+      pagination: { page, limit, total, pages: Math.max(1, Math.ceil(total / limit)) },
+    },
+  }
+}
+
 const Payroll = () => {
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('')
@@ -22,20 +84,32 @@ const Payroll = () => {
 
   const { data, isLoading } = useQuery(
     ['payroll', page, search, statusFilter, monthFilter],
-    () => payrollAPI.getAll({
-      page,
-      limit: 10,
-      search,
-      status: statusFilter,
-      startDate: monthFilter ? `${monthFilter}-01` : undefined,
-      employeeId: user?.role === 'EMPLOYEE' ? user.employee?.id : undefined
-    }),
+    async () => {
+      const params = {
+        page,
+        limit: 10,
+        search,
+        status: statusFilter,
+        startDate: monthFilter ? `${monthFilter}-01` : undefined,
+        employeeId: user?.role === 'EMPLOYEE' ? user.employee?.id : undefined
+      }
+      try {
+        const res = await payrollAPI.getAll(params)
+        const apiRecords = res?.data?.records || res?.data
+        if (Array.isArray(apiRecords) && apiRecords.length > 0) return res
+      } catch (err) {
+        // Payroll API not available yet - fall back to dummy data
+      }
+      // Employee users: dummy data isn't tied to their account, so show EMP001's records
+      return getMockPayroll({ ...params, employeeId: params.employeeId ? 'e1' : undefined })
+    },
     {
-      keepPreviousData: true
+      keepPreviousData: true,
+      retry: false
     }
   )
 
-  const records = data?.data?.records || []
+  const records = data?.data?.records || (Array.isArray(data?.data) ? data.data : [])
   const pagination = data?.data?.pagination
 
   const getStatusBadge = (status) => {

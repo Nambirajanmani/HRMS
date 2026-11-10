@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import prisma from '../prisma/client';
+import prisma from '../config/prisma.js';
 import { NotFoundError, UnauthorizedError } from '../utils/errors';
 
 const settingSchema = z.object({
